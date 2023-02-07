@@ -16,8 +16,12 @@ class CreateOwnersTable extends Migration
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('age');
+            $table->tinyInteger('gender');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->integer('prefectures_id')->constrained('prefectures');
+            $table->string('municipalities');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

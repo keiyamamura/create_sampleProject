@@ -34,13 +34,21 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:owners',
+            'age' => 'required|string|max:2',
+            'gender' => 'required|string|max:2',
+            'email' => 'required|string|email|max:255|unique:users',
+            'prefectures_id' => 'required|string|max:2',
+            'municipalities' => 'required|string|max:255',
             'password' => 'required|string|confirmed|min:8',
         ]);
 
         Auth::guard('owners')->login($user = Owner::create([
             'name' => $request->name,
+            'age' => $request->age,
+            'gender' => $request->gender,
             'email' => $request->email,
+            'prefectures_id' => $request->prefectures_id,
+            'municipalities' => $request->municipalities,
             'password' => Hash::make($request->password),
         ]));
 

@@ -17,7 +17,11 @@ class Owner extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'age',
+        'gender',
         'email',
+        'prefectures_id',
+        'municipalities',
         'password',
     ];
 
