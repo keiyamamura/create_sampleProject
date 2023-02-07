@@ -15,7 +15,7 @@ class CreatePrefecturesTable extends Migration
     {
         Schema::create('prefectures', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
         });
     }
 
