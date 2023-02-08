@@ -32,11 +32,11 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth:owners'])->group(function () {
     Route::get('/show/{id}', [InfoController::class, 'show'])
-        ->name('show');
+        ->name('info.show');
     Route::get('/edit/{id}', [InfoController::class, 'edit'])
-        ->name('edit');
+        ->name('info.edit');
     Route::post('/update/{id}', [InfoController::class, 'update'])
-        ->name('update');
+        ->name('info.update');
     });
 
 

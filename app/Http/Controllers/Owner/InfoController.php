@@ -18,14 +18,14 @@ class InfoController extends Controller
         $prefecture = CheckForm::prefecture($owner);
         $gender = CheckForm::gender($owner);
 
-        return view('owner.show', compact('owner', 'age', 'prefecture', 'gender'));
+        return view('owner.info.show', compact('owner', 'age', 'prefecture', 'gender'));
     }
 
     public function edit($id)
     {
         $owner = Owner::findOrFail($id);
 
-        return view('owner.edit', compact('owner'));
+        return view('owner.info.edit', compact('owner'));
     }
 
     public function update($id, Request $request)
@@ -49,7 +49,7 @@ class InfoController extends Controller
         $owner->save();
 
         return redirect()
-            ->route('owner.show', Auth::id())
+            ->route('owner.info.show', Auth::id())
             ->with('message', '更新が完了しました');
     }
 }

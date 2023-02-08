@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('owner.show', ['id' => Auth::id()])" :active="request()->routeIs('owner.show')">
+                    <x-nav-link :href="route('owner.info.show', ['id' => Auth::id()])" :active="request()->routeIs('owner.show')">
                         {{ __('会員情報') }}
                     </x-nav-link>
                 </div>
@@ -83,7 +83,7 @@
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('owner.show', ['id' => Auth::id()])" :active="request()->routeIs('owner.how')">
+            <x-responsive-nav-link :href="route('owner.info.show', ['id' => Auth::id()])" :active="request()->routeIs('owner.how')">
                 {{ __('会員情報') }}
             </x-responsive-nav-link>
         </div>

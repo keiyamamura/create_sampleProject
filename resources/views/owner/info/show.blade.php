@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-flash-message status="info" />
-                    
+
                     <!-- Name -->
                     <div>
                         <x-label for="name" :value="__('名前')" />
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
-                        <x-a href="{{ route('owner.edit', ['id' => $owner->id]) }}" class="ml-4">
+                        <x-a href="{{ route('owner.info.edit', ['id' => $owner->id]) }}" class="ml-4">
                             {{ __('編集する') }}
                         </x-a>
                     </div>
