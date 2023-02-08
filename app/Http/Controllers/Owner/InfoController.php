@@ -29,6 +29,7 @@ class InfoController extends Controller
 
     public function update($id, Request $request)
     {
+        // var_dump('update1');
         $request->validate([
             'name' => 'required|string|max:255',
             'age' => 'required|string|max:2',
@@ -37,6 +38,8 @@ class InfoController extends Controller
             'prefectures_id' => 'required|string|max:2',
             'municipalities' => 'required|string|max:255',
         ]);
+
+        // var_dump('update2');
 
         $owner = Owner::findOrFail($id);
         $owner->name = $request->name;
@@ -50,6 +53,8 @@ class InfoController extends Controller
         $age = CheckForm::age($request);
         $prefecture = CheckForm::prefecture($request);
         $gender = CheckForm::gender($request);
+
+        // dd($owner, $age, $prefecture, $gender);
 
         return view('owner.show', compact('owner', 'age', 'prefecture', 'gender'));
     }
