@@ -9,6 +9,9 @@ use App\Models\Owner;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
+
 
 class AuthenticatedSessionController extends Controller
 {
@@ -22,16 +25,6 @@ class AuthenticatedSessionController extends Controller
         return view('owner.auth.login');
     }
 
-    public function show($id)
-    {
-        $owner = Owner::findOrFail($id);
-
-        $age = CheckForm::age($owner);
-        $prefecture = CheckForm::prefecture($owner);
-        $gender = CheckForm::gender($owner);
-
-        return view('owner.show', compact('owner', 'age', 'prefecture', 'gender'));
-    }
     /**
      * Handle an incoming authentication request.
      *

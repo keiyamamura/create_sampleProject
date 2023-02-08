@@ -8,6 +8,7 @@ use App\Http\Controllers\Owner\Auth\NewPasswordController;
 use App\Http\Controllers\Owner\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
+use App\Http\Controllers\Owner\InfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,9 +31,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth:owners'])->name('dashboard');
 
 Route::middleware(['auth:owners'])->group(function () {
-    Route::get('/show/{id}', [AuthenticatedSessionController::class, 'show'])
+    Route::get('/show/{id}', [InfoController::class, 'show'])
         ->name('show');
-});
+    Route::get('/edit/{id}', [InfoController::class, 'edit'])
+        ->name('edit');
+    Route::post('/update/{id}', [InfoController::class, 'update'])
+        ->name('update');
+    });
 
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
