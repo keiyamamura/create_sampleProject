@@ -38,8 +38,8 @@ Route::middleware(['auth:owners'])->group(function () {
         ->name('info.edit');
     Route::post('/update/{id}', [InfoController::class, 'update'])
         ->name('info.update');
-    Route::get('/job', [JobController::class, 'index'])
-        ->name('job.index');
+    Route::get('/job/create', [JobController::class, 'create'])
+        ->name('job.create');
 });
 
 
