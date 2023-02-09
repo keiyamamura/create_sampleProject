@@ -9,6 +9,7 @@ use App\Http\Controllers\Owner\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use App\Http\Controllers\Owner\InfoController;
+use App\Http\Controllers\Owner\JobController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,7 +38,9 @@ Route::middleware(['auth:owners'])->group(function () {
         ->name('info.edit');
     Route::post('/update/{id}', [InfoController::class, 'update'])
         ->name('info.update');
-    });
+    Route::get('/job', [JobController::class, 'index'])
+        ->name('job.index');
+});
 
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
