@@ -34,7 +34,7 @@ class InfoController extends Controller
             'name' => 'required|string|max:255',
             'age' => 'required|string|max:2',
             'gender' => 'required|string|max:2',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:owners,email,' . Auth::id(),
             'prefectures_id' => 'required|string|max:2',
             'municipalities' => 'required|string|max:255',
         ]);
