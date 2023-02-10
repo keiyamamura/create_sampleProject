@@ -25,4 +25,9 @@ class Job extends Model
         'company_tel',
         'company_email',
     ];
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
+    }
 }
