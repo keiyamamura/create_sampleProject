@@ -31,7 +31,7 @@ class JobContactRequest extends FormRequest
             'status' => 'required|string|max:2',
             'wage_type' => 'required|string|max:2',
             'salary_amount' => 'required|string|max:8',
-            'img' => 'required',
+            // 'img' => 'required',
             'age' => 'required|string|max:2',
             'license' => 'required|string|max:2',
             'experience' => 'required|string|max:2',

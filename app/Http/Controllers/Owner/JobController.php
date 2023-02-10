@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\JobContactRequest;
@@ -55,9 +56,27 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobContactRequest $request)
     {
-        //
+        Job::create([
+            'owner_id' => Auth::id(),
+            'title' => $request->title,
+            'description' => $request->description,
+            'prefectures_id' => $request->prefectures_id,
+            'status' => $request->status,
+            'wage_type' => $request->wage_type,
+            'salary_amount' => $request->salary_amount,
+            'img' => $request->img,
+            'age' => $request->age,
+            'license' => $request->license,
+            'experience' => $request->experience,
+            'company_name' => $request->company_name,
+            'company_tel' => $request->company_tel,
+            'company_email' => $request->company_email,
+        ]);
+
+        return redirect()
+            ->route('owner.dashboard');
     }
 
     /**

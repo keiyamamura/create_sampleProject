@@ -4,13 +4,14 @@
             {{ __('求人確認') }}
         </h2>
     </x-slot>
-
-    <form method="POST" action="">
+    <form method="POST" action="{{ route('owner.job.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
+                        <!-- Validation Errors -->
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
                         <x-flash-message status="info" />
 
                         <section class="text-gray-600 body-font overflow-hidden">
@@ -23,7 +24,8 @@
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="title" :value="__('タイトル')" />
-                                                    <input type="text" id="title" name="title" value="{{ $job['title'] }}"
+                                                    <input type="text" id="title" name="title"
+                                                        value="{{ $job['title'] }}"
                                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 </div>
                                             </div> {{-- /Title --}}
@@ -235,7 +237,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="flex items-center">
-                                                            <input type="text" id="salary_amount" name="salary_amount" value="{{ $job['salary_amount']}}"
+                                                            <input type="text" id="salary_amount"
+                                                                name="salary_amount"
+                                                                value="{{ $job['salary_amount'] }}"
                                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mr-2">
                                                             <span>円</span>
                                                         </div>
@@ -320,7 +324,8 @@
                                     <div class="p-2 w-full">
                                         <div class="relative">
                                             <x-label for="company_name" :value="__('会社名')" />
-                                            <input type="text" id="company_name" name="company_name" value="{{ $job['company_name'] }}"
+                                            <input type="text" id="company_name" name="company_name"
+                                                value="{{ $job['company_name'] }}"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                         </div>
                                     </div>
@@ -328,7 +333,8 @@
                                     <div class="p-2 w-full">
                                         <div class="relative">
                                             <x-label for="company_tel" :value="__('電話番号')" />
-                                            <input type="tel" id="company_tel" name="company_tel" value="{{ $job['company_tel'] }}"
+                                            <input type="tel" id="company_tel" name="company_tel"
+                                                value="{{ $job['company_tel'] }}"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                         </div>
                                     </div>
@@ -336,7 +342,8 @@
                                     <div class="p-2 w-full">
                                         <div class="relative">
                                             <x-label for="company_email" :value="__('メールアドレス')" />
-                                            <input type="email" id="company_email" name="company_email" value="{{ $job['company_email'] }}"
+                                            <input type="email" id="company_email" name="company_email"
+                                                value="{{ $job['company_email'] }}"
                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                         </div>
                                     </div>
@@ -344,9 +351,9 @@
                             </div>
                         </section>
                         <div class="flex items-center justify-end mt-8">
-                            <x-a href="" class="ml-4">
+                            <x-button class="ml-4">
                                 {{ __('登録する') }}
-                            </x-a>
+                            </x-button>
                         </div>
                     </div>
                 </div>

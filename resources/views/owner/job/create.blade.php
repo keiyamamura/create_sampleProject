@@ -355,7 +355,7 @@
                         </section>
                         <div class="flex items-center justify-end mt-8">
                             <x-button class="ml-4">
-                                {{ __('登録する') }}
+                                {{ __('確認する') }}
                             </x-but>
                         </div>
                     </div>
