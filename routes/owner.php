@@ -40,6 +40,8 @@ Route::middleware(['auth:owners'])->group(function () {
         ->name('info.update');
     Route::get('/job/create', [JobController::class, 'create'])
         ->name('job.create');
+    Route::post('/job/confirm', [JobController::class, 'confirm'])
+        ->name('job.confirm');
 });
 
 

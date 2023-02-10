@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'age' => 'required|string|max:2',
             'gender' => 'required|string|max:2',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:owner',
             'prefectures_id' => 'required|string|max:2',
             'municipalities' => 'required|string|max:255',
             'password' => 'required|string|confirmed|min:8',
