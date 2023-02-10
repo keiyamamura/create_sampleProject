@@ -10,6 +10,22 @@ use App\Http\Requests\JobContactRequest;
 
 class JobController extends Controller
 {
+    private $formItems = [
+        'title',
+        'description',
+        'prefectures_id',
+        'status',
+        'wage_type',
+        'salary_amount',
+        // 'img', // file設定をあとで行う
+        'age',
+        'license',
+        'experience',
+        'company_name',
+        'company_tel',
+        'company_email',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -31,23 +47,15 @@ class JobController extends Controller
 
     public function confirm(JobContactRequest $request)
     {
-        $job = [
-            'title' => $request->title,
-            'description' => $request->description,
-            'prefectures_id' => $request->prefectures_id,
-            'status' => $request->status,
-            'wage_type' => $request->wage_type,
-            'salary_amount' => $request->salary_amount,
-            'img' => $request->img,
-            'age' => $request->age,
-            'license' => $request->license,
-            'experience' => $request->experience,
-            'company_name' => $request->company_name,
-            'company_tel' => $request->company_tel,
-            'company_email' => $request->company_email,
-        ];
+        $input = $request->only($this->formItems);
+        $request->session()->put("form_input", $input);
 
-        return view('owner.job.confirm', compact('job'));
+        //セッションに値が無い時はフォームに戻る
+        if (!$input) {
+            return redirect()->route('owner.dashboard');
+        }
+
+        return view('owner.job.confirm', compact('input'));
     }
 
     /**
@@ -58,22 +66,24 @@ class JobController extends Controller
      */
     public function store(JobContactRequest $request)
     {
-        Job::create([
-            'owner_id' => Auth::id(),
-            'title' => $request->title,
-            'description' => $request->description,
-            'prefectures_id' => $request->prefectures_id,
-            'status' => $request->status,
-            'wage_type' => $request->wage_type,
-            'salary_amount' => $request->salary_amount,
-            'img' => $request->img,
-            'age' => $request->age,
-            'license' => $request->license,
-            'experience' => $request->experience,
-            'company_name' => $request->company_name,
-            'company_tel' => $request->company_tel,
-            'company_email' => $request->company_email,
-        ]);
+        $input = $request->session()->get("form_input");
+        $input['owner_id'] = Auth::id();
+
+        //戻るボタンが押された時
+		if($request->has("back")){
+			return redirect()->route('owner.job.create')
+				->withInput($input);
+		}
+
+        //セッションに値が無い時はフォームに戻る
+        if (!$input) {
+            return redirect()->route('owner.dashboard');
+        }
+        // 値を保存
+        Job::create($input);
+
+        //セッションを空にする
+        $request->session()->forget("form_input");
 
         return redirect()
             ->route('owner.dashboard');
