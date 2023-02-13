@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Services;
 
+
 class CheckForm
 {
     public static function gender($data)
@@ -23,160 +24,160 @@ class CheckForm
         $age = '';
 
         if ($data->age == 19) {
-        $age = '19歳';
+            $age = '19歳';
         }
         if ($data->age == 20) {
-        $age = '20歳';
+            $age = '20歳';
         }
         if ($data->age == 21) {
-        $age = '21歳';
+            $age = '21歳';
         }
         if ($data->age == 22) {
-        $age = '22歳';
+            $age = '22歳';
         }
         if ($data->age == 23) {
-        $age = '23歳';
+            $age = '23歳';
         }
         if ($data->age == 24) {
-        $age = '24歳';
+            $age = '24歳';
         }
         if ($data->age == 25) {
-        $age = '25歳';
+            $age = '25歳';
         }
         if ($data->age == 26) {
-        $age = '26歳';
+            $age = '26歳';
         }
         if ($data->age == 27) {
-        $age = '27歳';
+            $age = '27歳';
         }
         if ($data->age == 28) {
-        $age = '28歳';
+            $age = '28歳';
         }
         if ($data->age == 29) {
-        $age = '29歳';
+            $age = '29歳';
         }
         if ($data->age == 30) {
-        $age = '30歳';
+            $age = '30歳';
         }
         if ($data->age == 31) {
-        $age = '31歳';
+            $age = '31歳';
         }
         if ($data->age == 32) {
-        $age = '32歳';
+            $age = '32歳';
         }
         if ($data->age == 33) {
-        $age = '33歳';
+            $age = '33歳';
         }
         if ($data->age == 34) {
-        $age = '34歳';
+            $age = '34歳';
         }
         if ($data->age == 35) {
-        $age = '35歳';
+            $age = '35歳';
         }
         if ($data->age == 36) {
-        $age = '36歳';
+            $age = '36歳';
         }
         if ($data->age == 37) {
-        $age = '37歳';
+            $age = '37歳';
         }
         if ($data->age == 38) {
-        $age = '38歳';
+            $age = '38歳';
         }
         if ($data->age == 39) {
-        $age = '39歳';
+            $age = '39歳';
         }
         if ($data->age == 40) {
-        $age = '40歳';
+            $age = '40歳';
         }
         if ($data->age == 41) {
-        $age = '41歳';
+            $age = '41歳';
         }
         if ($data->age == 42) {
-        $age = '42歳';
+            $age = '42歳';
         }
         if ($data->age == 43) {
-        $age = '43歳';
+            $age = '43歳';
         }
         if ($data->age == 44) {
-        $age = '44歳';
+            $age = '44歳';
         }
         if ($data->age == 45) {
-        $age = '45歳';
+            $age = '45歳';
         }
         if ($data->age == 46) {
-        $age = '46歳';
+            $age = '46歳';
         }
         if ($data->age == 47) {
-        $age = '47歳';
+            $age = '47歳';
         }
         if ($data->age == 48) {
-        $age = '48歳';
+            $age = '48歳';
         }
         if ($data->age == 49) {
-        $age = '49歳';
+            $age = '49歳';
         }
         if ($data->age == 50) {
-        $age = '50歳';
+            $age = '50歳';
         }
         if ($data->age == 51) {
-        $age = '51歳';
+            $age = '51歳';
         }
         if ($data->age == 52) {
-        $age = '52歳';
+            $age = '52歳';
         }
         if ($data->age == 53) {
-        $age = '53歳';
+            $age = '53歳';
         }
         if ($data->age == 54) {
-        $age = '54歳';
+            $age = '54歳';
         }
         if ($data->age == 55) {
-        $age = '55歳';
+            $age = '55歳';
         }
         if ($data->age == 56) {
-        $age = '56歳';
+            $age = '56歳';
         }
         if ($data->age == 57) {
-        $age = '57歳';
+            $age = '57歳';
         }
         if ($data->age == 58) {
-        $age = '58歳';
+            $age = '58歳';
         }
         if ($data->age == 59) {
-        $age = '59歳';
+            $age = '59歳';
         }
         if ($data->age == 60) {
-        $age = '60歳';
+            $age = '60歳';
         }
         if ($data->age == 61) {
-        $age = '61歳';
+            $age = '61歳';
         }
         if ($data->age == 62) {
-        $age = '62歳';
+            $age = '62歳';
         }
         if ($data->age == 63) {
-        $age = '63歳';
+            $age = '63歳';
         }
         if ($data->age == 64) {
-        $age = '64歳';
+            $age = '64歳';
         }
         if ($data->age == 65) {
-        $age = '65歳';
+            $age = '65歳';
         }
         if ($data->age == 66) {
-        $age = '66歳';
+            $age = '66歳';
         }
         if ($data->age == 67) {
-        $age = '67歳';
+            $age = '67歳';
         }
         if ($data->age == 68) {
-        $age = '68歳';
+            $age = '68歳';
         }
         if ($data->age == 69) {
-        $age = '69歳';
+            $age = '69歳';
         }
         if ($data->age == 70) {
-        $age = '70歳';
+            $age = '70歳';
         }
 
         return $age;
@@ -329,5 +330,89 @@ class CheckForm
         }
 
         return $prefecture;
+    }
+
+    public static function wage_type($data)
+    {
+        $wage_type = '';
+        if ('wage_type' == 0) {
+            $wage_type = '月給';
+        }
+        if ('wage_type' == 1) {
+            $wage_type = '時給';
+        }
+
+        return $wage_type;
+    }
+
+    public static function age_limit($data)
+    {
+        $age_limit = '';
+
+        if ($data->age == 1) {
+            $age_limit = '~19歳';
+        }
+        if ($data->age == 2) {
+            $age_limit = '20歳~29歳';
+        }
+        if ($data->age == 3) {
+            $age_limit = '30歳~39歳';
+        }
+        if ($data->age == 4) {
+            $age_limit = '40歳~';
+        }
+        if ($data->age == 4) {
+            $age_limit = '年齢制限なし';
+        }
+
+        return $age_limit;
+    }
+
+    public static function license($data)
+    {
+        $license = '';
+
+        if ($data->license == 1) {
+            $license = 'AT';
+        }
+        if ($data->license == 2) {
+            $license = 'MT';
+        }
+        if ($data->license == 3) {
+            $license = '不問';
+        }
+
+        return $license;
+    }
+
+    public static function experience($data)
+    {
+        $experience = '';
+
+        if ($data->experience == 1) {
+            $experience = '経験者';
+        }
+        if ($data->experience == 2) {
+            $experience = '未経験者歓迎';
+        }
+
+        return $experience;
+    }
+
+    public static function status($data)
+    {
+        $status = '';
+
+        if ($data->status == 1) {
+            $status = '正社員';
+        }
+        if ($data->status == 2) {
+            $status = '派遣';
+        }
+        if ($data->status == 3) {
+            $status = 'アルバイト';
+        }
+
+        return $status;
     }
 }

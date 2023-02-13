@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\JobContactRequest;
+use App\Http\Controllers\Services\CheckForm;
 
 class JobController extends Controller
 {
@@ -49,6 +50,8 @@ class JobController extends Controller
     public function confirm(JobContactRequest $request)
     {
         $input = $request->only($this->formItems);
+        $input = (object) $input;
+
         $request->session()->put("form_input", $input);
 
         $imageFile = $request->img;
@@ -61,7 +64,13 @@ class JobController extends Controller
             return redirect()->route('owner.dashboard');
         }
 
-        return view('owner.job.confirm', compact('input'));
+        $prefecture = CheckForm::prefecture($input);
+        $status     = CheckForm::status($input);
+        $experience = CheckForm::experience($input);
+        $license    = CheckForm::license($input);
+        $age_limit  = CheckForm::age_limit($input);
+
+        return view('owner.job.confirm', compact('input', 'prefecture', 'status', 'experience', 'license', 'age_limit'));
     }
 
     /**

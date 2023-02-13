@@ -308,10 +308,10 @@
                                                         class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block w-full">
                                                         <option value="">選択してください</option>
                                                         <option value="1"
-                                                            {{ old('status') == 1 ? 'selected' : '' }}>
+                                                            {{ old('experience') == 1 ? 'selected' : '' }}>
                                                             経験者</option>
                                                         <option value="2"
-                                                            {{ old('status') == 2 ? 'selected' : '' }}>
+                                                            {{ old('experience') == 2 ? 'selected' : '' }}>
                                                             未経験者歓迎</option>
                                                     </select>
                                                 </div>
