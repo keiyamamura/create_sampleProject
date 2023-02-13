@@ -31,7 +31,7 @@ class JobContactRequest extends FormRequest
             'status' => 'required|string|max:2',
             'wage_type' => 'required|string|max:2',
             'salary_amount' => 'required|string|max:8',
-            // 'img' => 'required',
+            'img' => 'image|mimes:jpg,jpeg,png|max:2048',
             'age' => 'required|string|max:2',
             'license' => 'required|string|max:2',
             'experience' => 'required|string|max:2',
@@ -39,6 +39,15 @@ class JobContactRequest extends FormRequest
             'company_tel' => 'required|string|max:20',
             // 'company_email' => 'required|string|email|max:255|unique:jobs,email,' . Auth::id(),
             'company_email' => 'required|string|email|max:255|'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'img.image' => '指定されたファイルが画像ではありません',
+            'img.mimes' => '指定された拡張子(jpg/jpeg/png)ではありません',
+            'img.max' => 'ファイルサイズは2MB以内にしてください',
         ];
     }
 }

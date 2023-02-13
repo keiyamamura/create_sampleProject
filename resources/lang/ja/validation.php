@@ -156,6 +156,19 @@ return [
     'attributes' => [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'title' => 'タイトル',
+        'description' => '説明文',
+        'prefectures_id' => '都道府県',
+        'status' => '雇用形態',
+        'wage_type' => '給与形態',
+        'salary_amount' => '給与金額',
+        // 'img' => '画像', // file設定をあとで行う
+        'age' => '年齢',
+        'license' => '免許',
+        'experience' => '経験度',
+        'company_name' => '会社名',
+        'company_tel' => '会社の電話番号',
+        'company_email' => '会社のメールアドレス',
     ],
 
 ];
