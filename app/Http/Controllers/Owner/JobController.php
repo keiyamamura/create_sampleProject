@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\JobContactRequest;
 
 class JobController extends Controller
@@ -49,6 +50,11 @@ class JobController extends Controller
     {
         $input = $request->only($this->formItems);
         $request->session()->put("form_input", $input);
+
+        $imageFile = $request->img;
+        if(!is_null($imageFile) && $imageFile->isValid()) {
+            Storage::putFile('public/jobs', $imageFile);
+        }
 
         //セッションに値が無い時はフォームに戻る
         if (!$input) {

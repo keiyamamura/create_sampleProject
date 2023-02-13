@@ -253,8 +253,7 @@
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="img" :value="__('画像')" />
-                                                    <input type="file" id="img" name="img"
-                                                        value="{{ old('img') }}"
+                                                    <input type="file" id="img" name="img" accept="image/png,image/jpeg,image/jpg"
                                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 </div>
                                             </div> {{-- /Img --}}
