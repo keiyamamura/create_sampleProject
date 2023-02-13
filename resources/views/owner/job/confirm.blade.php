@@ -24,9 +24,9 @@
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="title" :value="__('タイトル')" />
-                                                    <input type="text" id="title" name="title"
-                                                        value="{{ $input['title'] }}"
-                                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                                    <x-input id="title" type="text" name="title"
+                                                        value="{{ $input->title }}" disabled
+                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                 </div>
                                             </div> {{-- /Title --}}
 
@@ -34,8 +34,8 @@
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="description" :value="__('説明文')" />
-                                                    <textarea id="description" name="description"
-                                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $input['description'] }}</textarea>
+                                                    <textarea id="description" name="description" disabled="true"
+                                                        class="w-full bg-gray-300 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $input->description }}</textarea>
                                                 </div>
                                             </div> {{-- /Description --}}
 
@@ -43,151 +43,10 @@
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="prefectures_id" :value="__('都道府県')" />
-                                                    <select name="prefectures_id" id="prefectures_id" required
-                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block w-full">
-                                                        <option value="">選択してください</option>
-                                                        <option value="1"
-                                                            {{ $input['prefectures_id'] == 1 ? 'selected' : '' }}>北海道
-                                                        </option>
-                                                        <option value="2"
-                                                            {{ $input['prefectures_id'] == 2 ? 'selected' : '' }}>青森県
-                                                        </option>
-                                                        <option value="3"
-                                                            {{ $input['prefectures_id'] == 3 ? 'selected' : '' }}>岩手県
-                                                        </option>
-                                                        <option value="4"
-                                                            {{ $input['prefectures_id'] == 4 ? 'selected' : '' }}>宮城県
-                                                        </option>
-                                                        <option value="5"
-                                                            {{ $input['prefectures_id'] == 5 ? 'selected' : '' }}>秋田県
-                                                        </option>
-                                                        <option value="6"
-                                                            {{ $input['prefectures_id'] == 6 ? 'selected' : '' }}>山形県
-                                                        </option>
-                                                        <option value="7"
-                                                            {{ $input['prefectures_id'] == 7 ? 'selected' : '' }}>福島県
-                                                        </option>
-                                                        <option value="8"
-                                                            {{ $input['prefectures_id'] == 8 ? 'selected' : '' }}>茨城県
-                                                        </option>
-                                                        <option value="9"
-                                                            {{ $input['prefectures_id'] == 9 ? 'selected' : '' }}>栃木県
-                                                        </option>
-                                                        <option value="10"
-                                                            {{ $input['prefectures_id'] == 10 ? 'selected' : '' }}>群馬県
-                                                        </option>
-                                                        <option value="11"
-                                                            {{ $input['prefectures_id'] == 11 ? 'selected' : '' }}>埼玉県
-                                                        </option>
-                                                        <option value="12"
-                                                            {{ $input['prefectures_id'] == 12 ? 'selected' : '' }}>千葉県
-                                                        </option>
-                                                        <option value="13"
-                                                            {{ $input['prefectures_id'] == 13 ? 'selected' : '' }}>東京都
-                                                        </option>
-                                                        <option value="14"
-                                                            {{ $input['prefectures_id'] == 14 ? 'selected' : '' }}>神奈川県
-                                                        </option>
-                                                        <option value="15"
-                                                            {{ $input['prefectures_id'] == 15 ? 'selected' : '' }}>新潟県
-                                                        </option>
-                                                        <option value="16"
-                                                            {{ $input['prefectures_id'] == 16 ? 'selected' : '' }}>富山県
-                                                        </option>
-                                                        <option value="17"
-                                                            {{ $input['prefectures_id'] == 17 ? 'selected' : '' }}>石川県
-                                                        </option>
-                                                        <option value="18"
-                                                            {{ $input['prefectures_id'] == 18 ? 'selected' : '' }}>福井県
-                                                        </option>
-                                                        <option value="19"
-                                                            {{ $input['prefectures_id'] == 19 ? 'selected' : '' }}>山梨県
-                                                        </option>
-                                                        <option value="20"
-                                                            {{ $input['prefectures_id'] == 20 ? 'selected' : '' }}>長野県
-                                                        </option>
-                                                        <option value="21"
-                                                            {{ $input['prefectures_id'] == 21 ? 'selected' : '' }}>岐阜県
-                                                        </option>
-                                                        <option value="22"
-                                                            {{ $input['prefectures_id'] == 22 ? 'selected' : '' }}>静岡県
-                                                        </option>
-                                                        <option value="23"
-                                                            {{ $input['prefectures_id'] == 23 ? 'selected' : '' }}>愛知県
-                                                        </option>
-                                                        <option value="24"
-                                                            {{ $input['prefectures_id'] == 24 ? 'selected' : '' }}>三重県
-                                                        </option>
-                                                        <option value="25"
-                                                            {{ $input['prefectures_id'] == 25 ? 'selected' : '' }}>滋賀県
-                                                        </option>
-                                                        <option value="26"
-                                                            {{ $input['prefectures_id'] == 26 ? 'selected' : '' }}>京都府
-                                                        </option>
-                                                        <option value="27"
-                                                            {{ $input['prefectures_id'] == 27 ? 'selected' : '' }}>大阪府
-                                                        </option>
-                                                        <option value="28"
-                                                            {{ $input['prefectures_id'] == 28 ? 'selected' : '' }}>兵庫県
-                                                        </option>
-                                                        <option value="29"
-                                                            {{ $input['prefectures_id'] == 29 ? 'selected' : '' }}>奈良県
-                                                        </option>
-                                                        <option value="30"
-                                                            {{ $input['prefectures_id'] == 30 ? 'selected' : '' }}>和歌山県
-                                                        </option>
-                                                        <option value="31"
-                                                            {{ $input['prefectures_id'] == 31 ? 'selected' : '' }}>鳥取県
-                                                        </option>
-                                                        <option value="32"
-                                                            {{ $input['prefectures_id'] == 32 ? 'selected' : '' }}>島根県
-                                                        </option>
-                                                        <option value="33"
-                                                            {{ $input['prefectures_id'] == 33 ? 'selected' : '' }}>岡山県
-                                                        </option>
-                                                        <option value="34"
-                                                            {{ $input['prefectures_id'] == 34 ? 'selected' : '' }}>広島県
-                                                        </option>
-                                                        <option value="35"
-                                                            {{ $input['prefectures_id'] == 35 ? 'selected' : '' }}>山口県
-                                                        </option>
-                                                        <option value="36"
-                                                            {{ $input['prefectures_id'] == 36 ? 'selected' : '' }}>徳島県
-                                                        </option>
-                                                        <option value="37"
-                                                            {{ $input['prefectures_id'] == 37 ? 'selected' : '' }}>香川県
-                                                        </option>
-                                                        <option value="38"
-                                                            {{ $input['prefectures_id'] == 38 ? 'selected' : '' }}>愛媛県
-                                                        </option>
-                                                        <option value="39"
-                                                            {{ $input['prefectures_id'] == 39 ? 'selected' : '' }}>高知県
-                                                        </option>
-                                                        <option value="40"
-                                                            {{ $input['prefectures_id'] == 40 ? 'selected' : '' }}>福岡県
-                                                        </option>
-                                                        <option value="41"
-                                                            {{ $input['prefectures_id'] == 41 ? 'selected' : '' }}>佐賀県
-                                                        </option>
-                                                        <option value="42"
-                                                            {{ $input['prefectures_id'] == 42 ? 'selected' : '' }}>長崎県
-                                                        </option>
-                                                        <option value="43"
-                                                            {{ $input['prefectures_id'] == 43 ? 'selected' : '' }}>熊本県
-                                                        </option>
-                                                        <option value="44"
-                                                            {{ $input['prefectures_id'] == 44 ? 'selected' : '' }}>大分県
-                                                        </option>
-                                                        <option value="45"
-                                                            {{ $input['prefectures_id'] == 45 ? 'selected' : '' }}>宮崎県
-                                                        </option>
-                                                        <option value="46"
-                                                            {{ $input['prefectures_id'] == 46 ? 'selected' : '' }}>鹿児島県
-                                                        </option>
-                                                        <option value="47"
-                                                            {{ $input['prefectures_id'] == 47 ? 'selected' : '' }}>沖縄県
-                                                        </option>
-                                                    </select>
+
+                                                    <x-input id="prefectures_id" type="text" name="prefectures_id"
+                                                        value="{{ $prefecture }}" disabled
+                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                 </div>
                                             </div> {{-- /Prefecture --}}
 
@@ -195,19 +54,10 @@
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="status" :value="__('雇用形態')" />
-                                                    <select name="status" id="status" required
-                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block w-full">
-                                                        <option value="">選択してください</option>
-                                                        <option value="1"
-                                                            {{ $input['status'] == 1 ? 'selected' : '' }}>
-                                                            正社員</option>
-                                                        <option value="2"
-                                                            {{ $input['status'] == 2 ? 'selected' : '' }}>
-                                                            派遣</option>
-                                                        <option value="3"
-                                                            {{ $input['status'] == 3 ? 'selected' : '' }}>
-                                                            アルバイト</option>
-                                                    </select>
+
+                                                    <x-input id="status" type="text" name="status"
+                                                        value="{{ $status }}" disabled
+                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                 </div>
                                             </div> {{-- /Status --}}
                                         </div>
@@ -225,22 +75,22 @@
                                                         <div class="flex">
                                                             <div class="flex mr-6">
                                                                 <input id="monthly_salary" type="radio"
-                                                                    name="wage_type" value="0" required
-                                                                    {{ $input['wage_type'] == 0 ? 'checked' : '' }} />
+                                                                    name="wage_type" value="0"
+                                                                    disabled="true"
+                                                                    {{ $input->wage_type == 0 ? 'checked' : '' }} />
                                                                 <x-label for="monthly_salary" :value="__('月給')" />
                                                             </div>
                                                             <div class="flex">
-                                                                <input id="hourly_wage" type="radio"
-                                                                    name="wage_type" value="1" required
-                                                                    {{ $input['wage_type'] == 1 ? 'checked' : '' }} />
+                                                                <input id="hourly_wage" type="radio" name="wage_type"
+                                                                    value="1" disabled="true"
+                                                                    {{ $input->wage_type == 1 ? 'checked' : '' }} />
                                                                 <x-label for="hourly_wage" :value="__('時給')" />
                                                             </div>
                                                         </div>
                                                         <div class="flex items-center">
-                                                            <input type="text" id="salary_amount"
-                                                                name="salary_amount"
-                                                                value="{{ $input['salary_amount'] }}"
-                                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mr-2">
+                                                            <x-input type="text" name="salary_amount"
+                                                                value="{{ $input->salary_amount }}" disabled
+                                                                class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                             <span>円</span>
                                                         </div>
                                                     </div>
@@ -251,8 +101,8 @@
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="img" :value="__('画像')" />
-                                                    <input type="file" id="img" name="img"
-                                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                                    <x-input id="img" type="text" name="img" disabled
+                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                 </div>
                                             </div> {{-- /Img --}}
 
@@ -260,58 +110,25 @@
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="age" :value="__('年齢')" />
-                                                    <select name="age" id="age" required
-                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block w-full">
-                                                        <option value="">選択してください</option>
-                                                        <option value="1"
-                                                            {{ $input['age'] == 1 ? 'selected' : '' }}>
-                                                            ~19歳</option>
-                                                        <option value="2"
-                                                            {{ $input['age'] == 2 ? 'selected' : '' }}>
-                                                            20歳~29歳</option>
-                                                        <option value="3"
-                                                            {{ $input['age'] == 3 ? 'selected' : '' }}>
-                                                            30歳~39歳</option>
-                                                        <option value="4"
-                                                            {{ $input['age'] == 4 ? 'selected' : '' }}>
-                                                            40歳~</option>
-                                                        <option value="5"
-                                                            {{ $input['age'] == 4 ? 'selected' : '' }}>
-                                                            年齢制限なし</option>
-                                                    </select>
+                                                    <x-input id="age" type="text" name="age"
+                                                        value="{{ $age_limit }}" disabled
+                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                 </div>
                                             </div>
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="license" :value="__('車免許')" />
-                                                    <select name="license" id="license" required
-                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block w-full">
-                                                        <option value="">選択してください</option>
-                                                        <option value="1"
-                                                            {{ $input['license'] == 1 ? 'selected' : '' }}>
-                                                            AT</option>
-                                                        <option value="2"
-                                                            {{ $input['license'] == 2 ? 'selected' : '' }}>
-                                                            MT</option>
-                                                        <option value="3"
-                                                            {{ $input['license'] == 3 ? 'selected' : '' }}>
-                                                            不問</option>
-                                                    </select>
+                                                    <x-input id="license" type="text" name="license"
+                                                        value="{{ $license }}" disabled
+                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                 </div>
                                             </div>
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="experience" :value="__('経験')" />
-                                                    <select name="experience" id="experience" required
-                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block w-full">
-                                                        <option value="">選択してください</option>
-                                                        <option value="1"
-                                                            {{ $input['experience'] == 1 ? 'selected' : '' }}>
-                                                            経験者</option>
-                                                        <option value="2"
-                                                            {{ $input['experience'] == 2 ? 'selected' : '' }}>
-                                                            未経験者歓迎</option>
-                                                    </select>
+                                                    <x-input id="experience" type="text" name="experience"
+                                                        value="{{ $experience }}" disabled
+                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                 </div>
                                             </div>{{-- /Qualifications --}}
                                         </div>
@@ -324,35 +141,34 @@
                                     <div class="p-2 w-full">
                                         <div class="relative">
                                             <x-label for="company_name" :value="__('会社名')" />
-                                            <input type="text" id="company_name" name="company_name"
-                                                value="{{ $input['company_name'] }}"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <x-input id="company_name" type="text" name="company_name"
+                                                        value="{{ $input->company_name }}" disabled
+                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                         </div>
                                     </div>
 
                                     <div class="p-2 w-full">
                                         <div class="relative">
                                             <x-label for="company_tel" :value="__('電話番号')" />
-                                            <input type="tel" id="company_tel" name="company_tel"
-                                                value="{{ $input['company_tel'] }}"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                            <x-input id="company_tel" type="text" name="company_tel"
+                                                        value="{{ $input->company_tel }}" disabled
+                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                         </div>
                                     </div>
 
                                     <div class="p-2 w-full">
                                         <div class="relative">
                                             <x-label for="company_email" :value="__('メールアドレス')" />
-                                            <input type="email" id="company_email" name="company_email"
-                                                value="{{ $input['company_email'] }}"
-                                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                        </div>
+                                            <x-input id="company_email" type="text" name="company_email"
+                                                        value="{{ $input->company_email }}" disabled
+                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                     </div>
                                 </fieldset> {{-- /Company_name --}}
                             </div>
                         </section>
                         <div class="flex items-center justify-between mt-8">
-                            <x-input href="{{ route('owner.job.create' )}}" name="back" type="submit" value="やり直す"  class="bg-red-500 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
-                            <x-input type="submit" value="登録する" class=" inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
+                            <input name="back" type="submit" value="やり直す" class="bg-red-500 inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
+                            <input type="submit" value="登録する" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
                         </div>
                     </div>
                 </div>
