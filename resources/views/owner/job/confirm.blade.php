@@ -25,7 +25,7 @@
                                                 <div class="relative">
                                                     <x-label for="title" :value="__('タイトル')" />
                                                     <x-input id="title" type="text" name="title"
-                                                        value="{{ $input->title }}" disabled
+                                                        value="{{ $input['title'] }}" disabled
                                                         class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                 </div>
                                             </div> {{-- /Title --}}
@@ -35,7 +35,7 @@
                                                 <div class="relative">
                                                     <x-label for="description" :value="__('説明文')" />
                                                     <textarea id="description" name="description" disabled="true"
-                                                        class="w-full bg-gray-300 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $input->description }}</textarea>
+                                                        class="w-full bg-gray-300 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ $input['description'] }}</textarea>
                                                 </div>
                                             </div> {{-- /Description --}}
 
@@ -77,19 +77,19 @@
                                                                 <input id="monthly_salary" type="radio"
                                                                     name="wage_type" value="0"
                                                                     disabled="true"
-                                                                    {{ $input->wage_type == 0 ? 'checked' : '' }} />
+                                                                    {{ $input['wage_type'] == 0 ? 'checked' : '' }} />
                                                                 <x-label for="monthly_salary" :value="__('月給')" />
                                                             </div>
                                                             <div class="flex">
                                                                 <input id="hourly_wage" type="radio" name="wage_type"
                                                                     value="1" disabled="true"
-                                                                    {{ $input->wage_type == 1 ? 'checked' : '' }} />
+                                                                    {{ $input['wage_type'] == 1 ? 'checked' : '' }} />
                                                                 <x-label for="hourly_wage" :value="__('時給')" />
                                                             </div>
                                                         </div>
                                                         <div class="flex items-center">
                                                             <x-input type="text" name="salary_amount"
-                                                                value="{{ $input->salary_amount }}" disabled
+                                                                value="{{ $input['salary_amount'] }}" disabled
                                                                 class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                             <span>円</span>
                                                         </div>
@@ -142,7 +142,7 @@
                                         <div class="relative">
                                             <x-label for="company_name" :value="__('会社名')" />
                                             <x-input id="company_name" type="text" name="company_name"
-                                                        value="{{ $input->company_name }}" disabled
+                                                        value="{{ $input['company_name'] }}" disabled
                                                         class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                         </div>
                                     </div>
@@ -151,7 +151,7 @@
                                         <div class="relative">
                                             <x-label for="company_tel" :value="__('電話番号')" />
                                             <x-input id="company_tel" type="text" name="company_tel"
-                                                        value="{{ $input->company_tel }}" disabled
+                                                        value="{{ $input['company_tel'] }}" disabled
                                                         class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                         </div>
                                     </div>
@@ -160,7 +160,7 @@
                                         <div class="relative">
                                             <x-label for="company_email" :value="__('メールアドレス')" />
                                             <x-input id="company_email" type="text" name="company_email"
-                                                        value="{{ $input->company_email }}" disabled
+                                                        value="{{ $input['company_email'] }}" disabled
                                                         class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                     </div>
                                 </fieldset> {{-- /Company_name --}}
