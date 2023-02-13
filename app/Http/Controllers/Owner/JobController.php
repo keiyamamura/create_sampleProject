@@ -7,6 +7,7 @@ use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\JobContactRequest;
 use App\Http\Controllers\Services\CheckForm;
 
@@ -44,13 +45,14 @@ class JobController extends Controller
      */
     public function create()
     {
+        Log::emergency("create ログ!");
         return view('owner.job.create');
     }
 
     public function confirm(JobContactRequest $request)
     {
+        Log::emergency("confirm ログ!");
         $input = $request->only($this->formItems);
-        $input = (object) $input;
 
         $request->session()->put("form_input", $input);
 
@@ -79,8 +81,9 @@ class JobController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(JobContactRequest $request)
+    public function store(Request $request)
     {
+        Log::emergency("store ログ!");
         $input = $request->session()->get("form_input");
         $input['owner_id'] = Auth::id();
 
