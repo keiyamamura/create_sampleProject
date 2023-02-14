@@ -112,7 +112,8 @@ class JobController extends Controller
         $request->session()->forget("form_input");
 
         return redirect()
-            ->route('owner.dashboard');
+            ->route('owner.dashboard')
+            ->with('message', '求人登録が完了しました');
     }
 
     /**
