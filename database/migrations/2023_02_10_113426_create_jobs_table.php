@@ -25,7 +25,8 @@ class CreateJobsTable extends Migration
             $table->integer('status');
             $table->integer('wage_type');
             $table->integer('salary_amount');
-            $table->string('img')->nullable();
+            $table->string('img_name')->nullable();
+            $table->string('img_path')->nullable();
             $table->integer('age');
             $table->integer('license');
             $table->integer('experience');

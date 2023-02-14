@@ -68,7 +68,8 @@ class JobController extends Controller
             $file_name = str_replace('public/' . $dir . '/', '', $file_path);
             $imagePath = 'storage/' . $dir . '/' . $file_name;
         }
-        $input['img'] = $imagePath;
+        $input['img_name'] = $file_name;
+        $input['img_path']  = $imagePath;
 
         $request->session()->put("form_input", $input);
 
@@ -95,6 +96,7 @@ class JobController extends Controller
 
         //戻るボタンが押された時
 		if($request->has("back")){
+            Storage::disk('public')->delete('jobs/' . $input['img_name']);
 			return redirect()->route('owner.job.create')
 				->withInput($input);
 		}
