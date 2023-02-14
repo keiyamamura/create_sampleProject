@@ -20,7 +20,6 @@ class JobController extends Controller
         'status',
         'wage_type',
         'salary_amount',
-        // 'img', // file設定をあとで行う
         'age',
         'license',
         'experience',
@@ -36,6 +35,13 @@ class JobController extends Controller
      */
     public function index()
     {
+        $jobs = Job::whereOwner_id(Auth::id())->orderby('created_at', 'desc')->get();
+        foreach($jobs as $key => $job) {
+            $prefecture[] = CheckForm::prefecture($job);
+            $status[]     = CheckForm::status($job);
+        }
+
+        return view('owner.dashboard', compact('jobs', 'prefecture', 'status'));
     }
 
     /**
@@ -62,6 +68,7 @@ class JobController extends Controller
 
         $imageFile = $request->img;
         $imagePath = '';
+        $file_name = '';
         if(!is_null($imageFile) && $imageFile->isValid()) {
             $dir = 'jobs';
             $file_path = $request->file('img')->store('public/' . $dir);
