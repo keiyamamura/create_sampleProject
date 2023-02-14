@@ -52,19 +52,25 @@ class JobController extends Controller
     public function confirm(JobContactRequest $request)
     {
         Log::emergency("confirm ログ!");
+
         $input = $request->only($this->formItems);
-
-        $request->session()->put("form_input", $input);
-
-        $imageFile = $request->img;
-        if(!is_null($imageFile) && $imageFile->isValid()) {
-            Storage::putFile('public/jobs', $imageFile);
-        }
 
         //セッションに値が無い時はフォームに戻る
         if (!$input) {
             return redirect()->route('owner.dashboard');
         }
+
+        $imageFile = $request->img;
+        $imagePath = '';
+        if(!is_null($imageFile) && $imageFile->isValid()) {
+            $dir = 'jobs';
+            $file_path = $request->file('img')->store('public/' . $dir);
+            $file_name = str_replace('public/' . $dir . '/', '', $file_path);
+            $imagePath = 'storage/' . $dir . '/' . $file_name;
+        }
+        $input['img'] = $imagePath;
+
+        $request->session()->put("form_input", $input);
 
         $prefecture = CheckForm::prefecture($input);
         $status     = CheckForm::status($input);
@@ -72,7 +78,7 @@ class JobController extends Controller
         $license    = CheckForm::license($input);
         $age_limit  = CheckForm::age_limit($input);
 
-        return view('owner.job.confirm', compact('input', 'prefecture', 'status', 'experience', 'license', 'age_limit'));
+        return view('owner.job.confirm', compact('input', 'prefecture', 'status', 'experience', 'license', 'age_limit', 'imagePath'));
     }
 
     /**
