@@ -27,11 +27,9 @@ Route::get('/', function () {
     return view('owner.welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('owner.dashboard');
-})->middleware(['auth:owners'])->name('dashboard');
-
 Route::middleware(['auth:owners'])->group(function () {
+    Route::get('/dashboard', [JobController::class, 'index'])
+        ->name('dashboard');
     Route::get('/show/{id}', [InfoController::class, 'show'])
         ->name('info.show');
     Route::get('/edit/{id}', [InfoController::class, 'edit'])
