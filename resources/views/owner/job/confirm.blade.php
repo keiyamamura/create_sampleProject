@@ -101,8 +101,9 @@
                                             <div class="p-2 w-full">
                                                 <div class="relative">
                                                     <x-label for="img" :value="__('画像')" />
-                                                    <x-input id="img" type="text" name="img" disabled
-                                                        class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
+                                                        <div class="w-32">
+                                                            <x-thumbnail :filename="$imagePath" />
+                                                        </div>
                                                 </div>
                                             </div> {{-- /Img --}}
 
