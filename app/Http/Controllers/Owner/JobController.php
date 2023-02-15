@@ -36,6 +36,10 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::whereOwner_id(Auth::id())->orderby('created_at', 'desc')->get();
+
+        $prefecture = [];
+        $status = [];
+
         foreach($jobs as $key => $job) {
             $prefecture[] = CheckForm::prefecture($job);
             $status[]     = CheckForm::status($job);
@@ -120,7 +124,10 @@ class JobController extends Controller
 
         return redirect()
             ->route('owner.dashboard')
-            ->with('message', '求人登録が完了しました');
+            ->with([
+                'message' => '求人登録が完了しました',
+                'status' => 'info'
+            ]);
     }
 
     /**
@@ -131,7 +138,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -142,7 +149,18 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = Job::findOrFail($id);
+        if ($job->owner_id !== Auth::id()) {
+            return redirect()
+                ->route('owner.dashboard')
+                ->with([
+                    'message' => 'エラーが発生しました。',
+                    'status' => 'alert'
+                ]);
+
+        }
+
+        return view('owner.job.edit', compact('job'));
     }
 
     /**

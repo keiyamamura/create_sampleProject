@@ -10,7 +10,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <x-flash-message status="info" />
+                    <x-flash-message status="session('status')" />
                     <section class="text-gray-600 body-font">
                         <div class="container px-5 lg:py-12 mx-auto">
                             @forelse ($jobs as $key => $job)
@@ -31,7 +31,7 @@
                                             <p class="text-base leading-relaxed truncate">勤務地: {{ $prefecture[$key] }}
                                             </p>
                                             <div class="text-right cursor-pointer">
-                                                <a href=""
+                                                <a href="{{ route('owner.job.edit', ['id' => $job->id]) }}"
                                                     class="text-indigo-500 inline-flex items-center mt-3">編集する
                                                     <svg fill="none" stroke="currentColor" stroke-linecap="round"
                                                         stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2"

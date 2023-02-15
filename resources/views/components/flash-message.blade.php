@@ -1,14 +1,16 @@
 @props(['status' => 'info'])
+
 @php
-    if ($status === 'info') {
+    if (session('status') === 'info') {
         $bgColor = 'bg-blue-300';
     }
-    if ($status === 'error') {
-        $bgColor = 'bg-red-500';
+    if (session('status') === 'alert') {
+        $bgColor = 'bg-red-400';
     }
 @endphp
+
 @if (session('message'))
-    <div class="{{ $bgColor }} m-6 mx-auto p-2 text-white rounded-md shadow-sm">
+    <div class="{{ $bgColor }} w-1/2 mx-auto p-2 text-white my-4 rounded-sm">
         {{ session('message') }}
     </div>
 @endif
