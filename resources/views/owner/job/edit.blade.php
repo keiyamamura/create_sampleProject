@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('求人登録') }}
+            {{ __('求人更新') }}
         </h2>
     </x-slot>
 
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('owner.job.update', ['id' => $job->id]) }}" enctype="multipart/form-data">
         @csrf
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\JobContactRequest;
 use App\Http\Controllers\Services\CheckForm;
+use App\Http\Controllers\Services\Lib;
 
 class JobController extends Controller
 {
@@ -40,7 +41,7 @@ class JobController extends Controller
         $prefecture = [];
         $status = [];
 
-        foreach($jobs as $key => $job) {
+        foreach ($jobs as $key => $job) {
             $prefecture[] = CheckForm::prefecture($job);
             $status[]     = CheckForm::status($job);
         }
@@ -73,7 +74,7 @@ class JobController extends Controller
         $imageFile = $request->img;
         $imagePath = '';
         $file_name = '';
-        if(!is_null($imageFile) && $imageFile->isValid()) {
+        if (!is_null($imageFile) && $imageFile->isValid()) {
             $dir = 'jobs';
             $file_path = $request->file('img')->store('public/' . $dir);
             $file_name = str_replace('public/' . $dir . '/', '', $file_path);
@@ -106,11 +107,11 @@ class JobController extends Controller
         $input['owner_id'] = Auth::id();
 
         //戻るボタンが押された時
-		if($request->has("back")){
-            Storage::disk('public')->delete('jobs/' . $input['img_name']);
-			return redirect()->route('owner.job.create')
-				->withInput($input);
-		}
+        if ($request->has("back")) {
+            Lib::deleteImage($input['img_name']);
+            return redirect()->route('owner.job.create')
+                ->withInput($input);
+        }
 
         //セッションに値が無い時はフォームに戻る
         if (!$input) {
@@ -138,7 +139,6 @@ class JobController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -157,7 +157,6 @@ class JobController extends Controller
                     'message' => 'エラーが発生しました。',
                     'status' => 'alert'
                 ]);
-
         }
 
         return view('owner.job.edit', compact('job'));
@@ -170,9 +169,47 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(JobContactRequest $request, $id)
     {
-        //
+        $job = Job::findOrFail($id);
+        if ($job->owner_id !== Auth::id()) {
+            return redirect()
+                ->route('owner.dashboard')
+                ->with([
+                    'message' => 'エラーが発生しました。',
+                    'status' => 'alert'
+                ]);
+        }
+
+        $input = [];
+        $imageFile = $request->img;
+        if (!is_null($imageFile) && $imageFile->isValid()) {
+            Lib::deleteImage($job->img_name);
+            [$input['img_name'], $input['img_path']] = Lib::storeImage($request);
+            $job->img_name   = $input['img_name'];
+            $job->img_path   = $input['img_path'];
+        }
+
+        $job->title          = $request->title;
+        $job->description    = $request->description;
+        $job->prefectures_id = $request->prefectures_id;
+        $job->status         = $request->status;
+        $job->wage_type      = $request->wage_type;
+        $job->salary_amount  = $request->salary_amount;
+        $job->age            = $request->age;
+        $job->license        = $request->license;
+        $job->experience     = $request->experience;
+        $job->company_name   = $request->company_name;
+        $job->company_tel    = $request->company_tel;
+        $job->company_email  = $request->company_email;
+        $job->save();
+
+        return redirect()
+            ->route('owner.dashboard')
+            ->with([
+                'message' => '求人情報の更新が完了しました。',
+                'status'  => 'info'
+            ]);
     }
 
     /**
