@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Applicant;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +19,8 @@ class DatabaseSeeder extends Seeder
             PrefectureSeeder::class,
             UserSeeder::class,
             OwnerSeeder::class,
-            JobSeeder::class
+            JobSeeder::class,
+            ApplicantSeeder::class
         ]);
     }
 }
