@@ -10,6 +10,7 @@ use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use App\Http\Controllers\Owner\InfoController;
 use App\Http\Controllers\Owner\JobController;
+use App\Http\Controllers\Owner\ApplicantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,10 @@ Route::middleware(['auth:owners'])->group(function () {
         ->name('job.update');
     Route::post('/job/destroy/{id}', [JobController::class, 'destroy'])
         ->name('job.destroy');
+    Route::prefix('applicant')->group(function() {
+        Route::get('index', [ApplicantController::class, 'index'])
+            ->name('applicant.index');
+    });
 });
 
 
