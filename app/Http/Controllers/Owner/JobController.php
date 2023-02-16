@@ -176,7 +176,7 @@ class JobController extends Controller
             return redirect()
                 ->route('owner.dashboard')
                 ->with([
-                    'message' => 'エラーが発生しました。',
+                    'message' => '許可されていない操作です。',
                     'status' => 'alert'
                 ]);
         }
@@ -220,6 +220,23 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $job = Job::findOrFail($id);
+        if ($job->owner_id !== Auth::id()) {
+            return redirect()
+                ->route('owner.dashboard')
+                ->with([
+                    'message' => '許可されていない操作です。',
+                    'status' => 'alert'
+                ]);
+        }
+        Lib::deleteImage($job->img_name);
+        $job->delete();
+
+        return redirect()
+            ->route('owner.dashboard')
+            ->with([
+                'message' => '求人情報の削除が完了しました。',
+                'status'  => 'info'
+            ]);
     }
 }

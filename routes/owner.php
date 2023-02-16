@@ -46,6 +46,8 @@ Route::middleware(['auth:owners'])->group(function () {
         ->name('job.edit');
     Route::post('/job/update/{id}', [JobController::class, 'update'])
         ->name('job.update');
+    Route::post('/job/destroy/{id}', [JobController::class, 'destroy'])
+        ->name('job.destroy');
 });
 
 
