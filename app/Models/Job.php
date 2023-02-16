@@ -31,4 +31,9 @@ class Job extends Model
     {
         return $this->belongsTo(Owner::class);
     }
+
+    public function applicants()
+    {
+        return $this->hasMany(Applicant::class);
+    }
 }
