@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             PrefectureSeeder::class,
             UserSeeder::class,
             OwnerSeeder::class,
+            JobSeeder::class
         ]);
     }
 }
