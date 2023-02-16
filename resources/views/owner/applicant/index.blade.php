@@ -12,38 +12,60 @@
                     <x-flash-message status="session('status')" />
                     <section class="text-gray-600 body-font">
                         <div class="container px-5 lg:py-12 mx-auto">
-                            @forelse ($applicants as $applicant)
-                                <div class="flex flex-col sm:-m-4 -mx-4 -mb-10 -mt-4">
-                                    <div
-                                        class="flex flex-col md:flex-row lg:justify-around lg:items-center w-full p-4 sm:mb-0 mb-6">
-                                        <div class="w-full md:w-1/2 md:ml-8">
-                                            <h2 class="text-xl font-medium title-font text-gray-900 mt-5 truncate">
-                                                {{ $applicant->user->name}}</h2>
-                                            <p class="text-base leading-relaxed truncate">年齢: {{ $applicant->user->age }}
-                                            </p>
-                                            <p class="text-base leading-relaxed truncate">性別: {{ $applicant->user->gender }}
-                                            </p>
-                                            </p>
-                                            <div class="text-right cursor-pointer">
-                                                <a href=""
-                                                    class="text-indigo-500 inline-flex items-center mt-3">確認する
-                                                    <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2"
-                                                        viewBox="0 0 24 24">
-                                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @empty
-                                <div class="flex flex-col text-center w-full mb-20">
-                                    <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
-                                        応募者がいません
-                                    </h1>
-                                </div>
-                            @endforelse
+                            <div class="flex flex-col text-center w-full mb-20">
+                                <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
+                                    応募者一覧</h1>
+                            </div>
+                            <div class="w-full mx-auto overflow-auto">
+                                <table class="table-auto w-full text-left whitespace-no-wrap">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
+                                                求人タイトル</th>
+                                            <th
+                                                class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                                                氏名</th>
+                                            <th
+                                                class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                                                年齢</th>
+                                            <th
+                                                class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                                                現在の職業</th>
+                                            <th
+                                                class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                                                </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($applicants as $key => $applicant)
+                                            <tr>
+                                                <td class="w-1/2 border-t-2 border-b-2 border-gray-200 px-4 py-3">
+                                                    <div>
+                                                        {{ $applicant->job->title }}
+                                                    </div>
+                                                </td>
+                                                <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
+                                                    {{ $applicant->user->name }}</td>
+                                                <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
+                                                    {{ $applicant->user->age }}歳</td>
+                                                <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
+                                                    {{ $current_jobs[$key] }}</td>
+                                                <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
+                                                    <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">確認する
+                                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                                        </svg>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
                             {{-- @empty
                                 <div class="flex flex-col text-center w-full mb-20">
                                     <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
