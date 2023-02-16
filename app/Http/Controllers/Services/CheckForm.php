@@ -415,4 +415,39 @@ class CheckForm
 
         return $status;
     }
+
+    public static function current_job($data)
+    {
+        $current_job = '';
+
+        if ($data == 1) {
+            $current_job = '公務員';
+        }
+        if ($data == 2) {
+            $current_job = '経営者・役員';
+        }
+        if ($data == 3) {
+            $current_job = '会社員';
+        }
+        if ($data == 4) {
+            $current_job = '自営業';
+        }
+        if ($data == 5) {
+            $current_job = '自由業';
+        }
+        if ($data == 6) {
+            $current_job = '専業主婦';
+        }
+        if ($data == 7) {
+            $current_job = 'パート・アルバイト';
+        }
+        if ($data == 8) {
+            $current_job = '学生';
+        }
+        if ($data == 9) {
+            $current_job = 'その他';
+        }
+
+        return $current_job;
+    }
 }
