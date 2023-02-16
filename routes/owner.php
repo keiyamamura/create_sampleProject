@@ -49,9 +49,12 @@ Route::middleware(['auth:owners'])->group(function () {
         ->name('job.update');
     Route::post('/job/destroy/{id}', [JobController::class, 'destroy'])
         ->name('job.destroy');
-    Route::prefix('applicant')->group(function() {
+        
+    Route::prefix('applicant')->name('applicant.')->group(function () {
         Route::get('index', [ApplicantController::class, 'index'])
-            ->name('applicant.index');
+            ->name('index');
+        Route::get('show/{user}/{job}', [ApplicantController::class, 'show'])
+            ->name('show');
     });
 });
 
