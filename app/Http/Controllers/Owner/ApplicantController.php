@@ -14,7 +14,7 @@ class ApplicantController extends Controller
 {
     public function index()
     {
-        $applicants = Applicant::where('owner_id', Auth::id())
+        $applicants = Applicant::where('owner_id', Auth::id())->where('consent_flg', 0)
             ->join('users', 'users.id', '=', 'applicants.user_id')
             ->join('jobs', 'jobs.id', '=', 'applicants.job_id')
             ->get();
@@ -47,9 +47,18 @@ class ApplicantController extends Controller
 
     public function consent($user, $job)
     {
-        $applicants = Applicant::where('user_id', $user)->where('job_id', $job)->get();
+        $applicant = Applicant::where('user_id', $user)->where('job_id', $job)->first();
+        $consent = Applicant::findOrFail($applicant->id);
 
-        dd($applicants[0]->user_id);
+        $consent->consent_flg = 1;
+        $consent->save();
+
+        return redirect()
+            ->route('owner.applicant.index')
+            ->with([
+                'message' => '承諾しました',
+                'status' => 'info'
+            ]);
     }
 
     public function destroy($user, $job)

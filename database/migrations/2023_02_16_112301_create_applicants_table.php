@@ -23,6 +23,7 @@ class CreateApplicantsTable extends Migration
                 ->constrained('jobs')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->tinyInteger('consent_flg')->default('0')->comment('承諾');
             $table->timestamps();
         });
     }
