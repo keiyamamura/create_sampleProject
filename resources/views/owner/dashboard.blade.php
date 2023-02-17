@@ -100,7 +100,7 @@
                                                                     <div class="flex">
                                                                         <div class="flex mr-6">
                                                                             <input id="monthly_salary" type="radio"
-                                                                                name="wage_type" value="0"
+                                                                                name="{{ 'wage_type' . $key}}" value="0"
                                                                                 disabled="true"
                                                                                 {{ $job->wage_type == 0 ? 'checked' : '' }} />
                                                                             <x-label for="monthly_salary"
@@ -108,7 +108,7 @@
                                                                         </div>
                                                                         <div class="flex">
                                                                             <input id="hourly_wage" type="radio"
-                                                                                name="wage_type" value="1"
+                                                                                name="{{ 'wage_type' . $key}}" value="1"
                                                                                 disabled="true"
                                                                                 {{ $job->wage_type == 1 ? 'checked' : '' }} />
                                                                             <x-label for="hourly_wage"
