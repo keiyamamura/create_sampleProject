@@ -42,8 +42,8 @@ class JobController extends Controller
         $status = [];
 
         foreach ($jobs as $key => $job) {
-            $prefecture[] = CheckForm::prefecture($job);
-            $status[]     = CheckForm::status($job);
+            $prefecture[] = CheckForm::prefecture($job->prefectures_id);
+            $status[]     = CheckForm::status($job->status);
         }
 
         return view('owner.dashboard', compact('jobs', 'prefecture', 'status'));
