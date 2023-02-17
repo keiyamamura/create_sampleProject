@@ -14,9 +14,9 @@ class InfoController extends Controller
     {
         $owner = Owner::findOrFail($id);
 
-        $age = CheckForm::age($owner);
-        $prefecture = CheckForm::prefecture($owner);
-        $gender = CheckForm::gender($owner);
+        $age = CheckForm::age($owner->age);
+        $prefecture = CheckForm::prefecture($owner->prefectures_id);
+        $gender = CheckForm::gender($owner->gender);
 
         return view('owner.info.show', compact('owner', 'age', 'prefecture', 'gender'));
     }
@@ -50,6 +50,9 @@ class InfoController extends Controller
 
         return redirect()
             ->route('owner.info.show', Auth::id())
-            ->with('message', '更新が完了しました');
+            ->with([
+                'message' => '更新が完了しました',
+                'status' => 'info'
+            ]);
     }
 }
