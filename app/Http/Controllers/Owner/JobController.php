@@ -85,11 +85,11 @@ class JobController extends Controller
 
         $request->session()->put("form_input", $input);
 
-        $prefecture = CheckForm::prefecture($input);
-        $status     = CheckForm::status($input);
-        $experience = CheckForm::experience($input);
-        $license    = CheckForm::license($input);
-        $age_limit  = CheckForm::age_limit($input);
+        $prefecture = CheckForm::prefecture($input['prefectures_id']);
+        $status     = CheckForm::status($input['status']);
+        $experience = CheckForm::experience($input['experience']);
+        $license    = CheckForm::license($input['license']);
+        $age_limit  = CheckForm::age_limit($input['age']);
 
         return view('owner.job.confirm', compact('input', 'prefecture', 'status', 'experience', 'license', 'age_limit', 'imagePath'));
     }
