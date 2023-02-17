@@ -30,7 +30,7 @@ class ApplicantController extends Controller
     public function show($user, $job)
     {
         $user = User::findOrFail($user);
-        $job  = Job::findOrFail($job);
+        $job  = Job::where('owner_id', Auth::id())->findOrFail($job);
 
         $prefecture = CheckForm::prefecture($job->prefectures_id);
         $status     = CheckForm::status($job->status);
