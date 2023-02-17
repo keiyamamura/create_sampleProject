@@ -44,4 +44,26 @@ class ApplicantController extends Controller
 
         return view('owner.applicant.show', compact('user', 'job','prefecture', 'status', 'experience', 'license', 'age_limit', 'user_age', 'user_gender', 'user_prefecture', 'user_current_job'));
     }
+
+    public function consent($user, $job)
+    {
+        $applicants = Applicant::where('user_id', $user)->where('job_id', $job)->get();
+
+        dd($applicants[0]->user_id);
+    }
+
+    public function destroy($user, $job)
+    {
+        $applicant = Applicant::where('user_id', $user)->where('job_id', $job)->first();
+        $applicant = Applicant::findOrFail($applicant->id);
+
+        $applicant->delete();
+
+        return redirect()
+            ->route('owner.applicant.index')
+            ->with([
+                'message' => '承諾しませんでした',
+                'status' => 'alert'
+            ]);
+    }
 }
