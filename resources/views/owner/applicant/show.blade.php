@@ -207,8 +207,9 @@
                                                 <div class="p-2 w-full">
                                                     <div class="relative">
                                                         <x-label for="municipalities" :value="__('住所')" />
-                                                        <x-input id="municipalities" type="text" name="municipalities"
-                                                            value="{{ $user->municipalities }}" disabled
+                                                        <x-input id="municipalities" type="text"
+                                                            name="municipalities" value="{{ $user->municipalities }}"
+                                                            disabled
                                                             class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                     </div>
                                                 </div> {{-- /UserMunicipalities --}}
@@ -225,6 +226,24 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between mt-5">
+                            <div>
+                                <form action="" method="post">
+                                    @csrf
+                                    <input type="submit" value="承諾しない"
+                                        onclick="return confirm('承諾しないでよろしいですか？')"
+                                        class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-400 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
+                                </form>
+                            </div>
+                            <div>
+                                <form action="" method="post">
+                                    @csrf
+                                    <input type="submit" value="承諾する"
+                                        onclick="return confirm('承諾してよろしいですか？')"
+                                        class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
+                                </form>
                             </div>
                         </div>
                     </section>
