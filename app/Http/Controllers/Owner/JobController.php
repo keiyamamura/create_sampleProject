@@ -40,13 +40,19 @@ class JobController extends Controller
 
         $prefecture = [];
         $status = [];
+        $experience = [];
+        $license = [];
+        $age_limit = [];
 
         foreach ($jobs as $key => $job) {
             $prefecture[] = CheckForm::prefecture($job->prefectures_id);
             $status[]     = CheckForm::status($job->status);
+            $experience[] = CheckForm::experience($job->experience);
+            $license[]    = CheckForm::license($job->license);
+            $age_limit[]  = CheckForm::age_limit($job->age);
         }
 
-        return view('owner.dashboard', compact('jobs', 'prefecture', 'status'));
+        return view('owner.dashboard', compact('jobs', 'prefecture', 'status', 'experience', 'license', 'age_limit'));
     }
 
     /**
