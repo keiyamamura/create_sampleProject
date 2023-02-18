@@ -180,11 +180,10 @@
                     <option value="2" {{ old('current_job') == 2 ? 'selected' : ''}} >経営者・役員</option>
                     <option value="3" {{ old('current_job') == 3 ? 'selected' : ''}} >会社員</option>
                     <option value="4" {{ old('current_job') == 4 ? 'selected' : ''}} >自営業</option>
-                    <option value="5" {{ old('current_job') == 5 ? 'selected' : ''}} >自由業</option>
-                    <option value="6" {{ old('current_job') == 6 ? 'selected' : ''}} >専業主婦</option>
-                    <option value="7" {{ old('current_job') == 7 ? 'selected' : ''}} >パート・アルバイト</option>
-                    <option value="8" {{ old('current_job') == 8 ? 'selected' : ''}} >学生</option>
-                    <option value="9" {{ old('current_job') == 9 ? 'selected' : ''}} >その他</option>
+                    <option value="5" {{ old('current_job') == 5 ? 'selected' : ''}} >専業主婦</option>
+                    <option value="6" {{ old('current_job') == 6 ? 'selected' : ''}} >パート・アルバイト</option>
+                    <option value="7" {{ old('current_job') == 7 ? 'selected' : ''}} >学生</option>
+                    <option value="8" {{ old('current_job') == 8 ? 'selected' : ''}} >その他</option>
                 </select>
             </div>
 

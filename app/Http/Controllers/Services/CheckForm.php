@@ -433,18 +433,15 @@ class CheckForm
             $current_job = '自営業';
         }
         if ($data == 5) {
-            $current_job = '自由業';
-        }
-        if ($data == 6) {
             $current_job = '専業主婦';
         }
-        if ($data == 7) {
+        if ($data == 6) {
             $current_job = 'パート・アルバイト';
         }
-        if ($data == 8) {
+        if ($data == 7) {
             $current_job = '学生';
         }
-        if ($data == 9) {
+        if ($data == 8) {
             $current_job = 'その他';
         }
 
