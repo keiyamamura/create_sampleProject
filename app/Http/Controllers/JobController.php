@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
+use App\Models\Applicant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -174,7 +175,9 @@ class JobController extends Controller
         $license    = CheckForm::license($job->license);
         $age_limit  = CheckForm::age_limit($job->age);
 
-        return view('user.job.show', compact('job', 'prefecture', 'status', 'experience', 'license', 'age_limit'));
+        $applicant_list = Applicant::where('user_id', Auth::id())->where('job_id', $id)->get();
+
+        return view('user.job.show', compact('job', 'prefecture', 'status', 'experience', 'license', 'age_limit', 'applicant_list'));
     }
 
     /**
