@@ -115,7 +115,8 @@
                                                                 </div>
                                                                 <div class="flex items-center">
                                                                     <x-input type="text" name="salary_amount"
-                                                                        value="{{ $job->salary_amount . ' 円'}}" disabled
+                                                                        value="{{ $job->salary_amount . ' 円' }}"
+                                                                        disabled
                                                                         class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
                                                                 </div>
                                                             </div>
@@ -239,18 +240,13 @@
                         </div>
                         <div class="flex justify-between mt-5">
                             <div>
-                                <form
-                                    action="{{ route('user.dashboard') }}"
-                                    method="get">
-                                    @csrf
+                                <form action="{{ route('user.dashboard') }}" method="get">
                                     <input type="submit" value="仕事検索へ戻る"
                                         class="inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
                                 </form>
                             </div>
                             <div>
-                                <form
-                                    action=""
-                                    method="post">
+                                <form action="{{ route('user.applicant.store', ['job' => $job->id])}}" method="post">
                                     @csrf
                                     <input type="submit" value="応募する"
                                         class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />

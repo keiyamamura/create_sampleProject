@@ -63,6 +63,24 @@ class ApplicantController extends Controller
         return view('owner.applicant.show', compact('user', 'job','prefecture', 'status', 'experience', 'license', 'age_limit', 'user_age', 'user_gender', 'user_prefecture', 'user_current_job'));
     }
 
+    public function store($job)
+    {
+        $user = User::findOrFail(Auth::id());
+        $job = Job::findOrFail($job);
+
+        Applicant::create([
+            'user_id' => $user->id,
+            'job_id' => $job->id
+        ]);
+
+        return redirect()
+            ->route('user.dashboard')
+            ->with([
+                'message' => '応募が完了しました。',
+                'status' => 'info'
+            ]);
+    }
+
     public function consent($user, $job)
     {
         $applicant = Applicant::where('user_id', $user)->where('job_id', $job)->first();

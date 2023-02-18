@@ -31,6 +31,8 @@ Route::middleware(['auth:users'])->group(function () {
     Route::prefix('applicant')->name('applicant.')->group(function () {
         Route::get('create/{job}', [ApplicantController::class, 'create'])
             ->name('create');
+        Route::post('store/{job}', [ApplicantController::class, 'store'])
+            ->name('store');
     });
 
     Route::prefix('job')->name('job.')->group(function () {
