@@ -29,7 +29,7 @@ Route::middleware(['auth:users'])->group(function () {
         ->name('dashboard');
 
     Route::prefix('applicant')->name('applicant.')->group(function () {
-        Route::get('show/{id}', [ApplicantController::class, 'create'])
+        Route::get('create/{job}', [ApplicantController::class, 'create'])
             ->name('create');
     });
 

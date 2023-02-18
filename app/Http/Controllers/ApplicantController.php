@@ -27,6 +27,24 @@ class ApplicantController extends Controller
         return view('owner.applicant.index', compact('applicants', 'current_jobs'));
     }
 
+    public function create($job)
+    {
+        $user = User::findOrFail(Auth::id());
+        $job = Job::findOrFail($job);
+
+        $prefecture = CheckForm::prefecture($job->prefectures_id);
+        $status     = CheckForm::status($job->status);
+        $experience = CheckForm::experience($job->experience);
+        $license    = CheckForm::license($job->license);
+        $age_limit  = CheckForm::age_limit($job->age);
+        $user_age  = CheckForm::age($user->age);
+        $user_gender = CheckForm::gender($user->gender);
+        $user_prefecture  = CheckForm::prefecture($user->prefectures_id);
+        $user_current_job  = CheckForm::current_job($user->current_job);
+
+        return view('user.applicant.create', compact('user', 'job', 'prefecture', 'status', 'experience', 'license', 'age_limit', 'user_age', 'user_gender', 'user_prefecture', 'user_current_job'));
+    }
+
     public function show($user, $job)
     {
         $user = User::findOrFail($user);
