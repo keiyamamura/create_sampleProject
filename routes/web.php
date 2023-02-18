@@ -28,6 +28,8 @@ Route::middleware(['auth:users'])->group(function () {
             ->name('show');
         Route::get('edit/{id}', [InfoController::class, 'edit'])
             ->name('edit');
+        Route::post('update/{id}', [InfoController::class, 'update'])
+            ->name('update');
     });
 });
 

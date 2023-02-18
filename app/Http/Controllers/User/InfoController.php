@@ -41,7 +41,7 @@ class InfoController extends Controller
                     'status' => 'alert'
                 ]);
         }
-        
+
         return view('user.info.edit', compact('user'));
     }
 
@@ -54,6 +54,7 @@ class InfoController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
             'prefectures_id' => 'required|string|max:2',
             'municipalities' => 'required|string|max:255',
+            'current_job' => 'required|string|max:2',
         ]);
 
         $user = User::findOrFail($id);
@@ -63,6 +64,7 @@ class InfoController extends Controller
         $user->email = $request->email;
         $user->prefectures_id = $request->prefectures_id;
         $user->municipalities = $request->municipalities;
+        $user->current_job = $request->current_job;
         $user->save();
 
         return redirect()
