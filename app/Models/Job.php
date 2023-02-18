@@ -36,4 +36,9 @@ class Job extends Model
     {
         return $this->hasMany(Applicant::class);
     }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
 }
