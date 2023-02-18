@@ -9,7 +9,7 @@ use App\Http\Controllers\Owner\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use App\Http\Controllers\Owner\InfoController;
-use App\Http\Controllers\Owner\JobController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\Owner\ApplicantController;
 use Illuminate\Support\Facades\Route;
 
