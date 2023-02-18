@@ -29,6 +29,16 @@ class ApplicantController extends Controller
 
     public function create($job)
     {
+        $applicant_list = Applicant::where('user_id', Auth::id())->where('job_id', $job)->get();
+        if ($applicant_list->isNotEmpty()) {
+            return redirect()
+                ->route('user.dashboard')
+                ->with([
+                    'message' => '不正な操作が行われました',
+                    'status' => 'alert'
+                ]);
+        }
+
         $user = User::findOrFail(Auth::id());
         $job = Job::findOrFail($job);
 
@@ -65,12 +75,19 @@ class ApplicantController extends Controller
 
     public function store($job)
     {
-        $user = User::findOrFail(Auth::id());
-        $job = Job::findOrFail($job);
-
+        $applicant_list = Applicant::where('user_id', Auth::id())->where('job_id', $job)->get();
+        if ($applicant_list->isNotEmpty()) {
+            return redirect()
+                ->route('user.dashboard')
+                ->with([
+                    'message' => '不正な操作が行われました',
+                    'status' => 'alert'
+                ]);
+        }
+        
         Applicant::create([
-            'user_id' => $user->id,
-            'job_id' => $job->id
+            'user_id' => Auth::id(),
+            'job_id' => $job
         ]);
 
         return redirect()
