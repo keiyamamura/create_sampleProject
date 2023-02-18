@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\User\InfoController;
 
 /*
@@ -26,6 +27,11 @@ Route::get('/', function () {
 Route::middleware(['auth:users'])->group(function () {
     Route::get('/dashboard', [JobController::class, 'list'])
         ->name('dashboard');
+
+    Route::prefix('applicant')->name('applicant.')->group(function () {
+        Route::get('show/{id}', [ApplicantController::class, 'create'])
+            ->name('create');
+    });
 
     Route::prefix('job')->name('job.')->group(function () {
         Route::get('show/{id}', [JobController::class, 'show'])

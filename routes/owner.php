@@ -10,7 +10,7 @@ use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use App\Http\Controllers\Owner\InfoController;
 use App\Http\Controllers\JobController;
-use App\Http\Controllers\Owner\ApplicantController;
+use App\Http\Controllers\ApplicantController;
 use Illuminate\Support\Facades\Route;
 
 /*
