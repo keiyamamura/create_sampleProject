@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\InfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,12 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('user.dashboard');
 })->middleware(['auth:users'])->name('dashboard');
+
+Route::middleware(['auth:users'])->group(function () {
+    Route::prefix('info')->name('info.')->group(function () {
+    Route::get('show/{id}', [InfoController::class, 'show'])
+        ->name('show');
+    });
+});
 
 require __DIR__.'/auth.php';
