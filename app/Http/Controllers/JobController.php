@@ -55,6 +55,27 @@ class JobController extends Controller
         return view('owner.dashboard', compact('jobs', 'prefecture', 'status', 'experience', 'license', 'age_limit'));
     }
 
+    public function list()
+    {
+        $jobs = Job::orderby('created_at', 'desc')->paginate(10);
+
+        $prefecture = [];
+        $status = [];
+        $experience = [];
+        $license = [];
+        $age_limit = [];
+
+        foreach ($jobs as $key => $job) {
+            $prefecture[] = CheckForm::prefecture($job->prefectures_id);
+            $status[]     = CheckForm::status($job->status);
+            $experience[] = CheckForm::experience($job->experience);
+            $license[]    = CheckForm::license($job->license);
+            $age_limit[]  = CheckForm::age_limit($job->age);
+        }
+
+        return view('user.dashboard', compact('jobs', 'prefecture', 'status', 'experience', 'license', 'age_limit'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
