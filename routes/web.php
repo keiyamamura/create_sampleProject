@@ -24,8 +24,10 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth:users'])->group(function () {
     Route::prefix('info')->name('info.')->group(function () {
-    Route::get('show/{id}', [InfoController::class, 'show'])
-        ->name('show');
+        Route::get('show/{id}', [InfoController::class, 'show'])
+            ->name('show');
+        Route::get('edit/{id}', [InfoController::class, 'edit'])
+            ->name('edit');
     });
 });
 

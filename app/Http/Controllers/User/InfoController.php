@@ -33,7 +33,15 @@ class InfoController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-
+        if ($user->id !== Auth::id()) {
+            return redirect()
+                ->route('user.dashboard')
+                ->with([
+                    'message' => '許可されていない操作です。',
+                    'status' => 'alert'
+                ]);
+        }
+        
         return view('user.info.edit', compact('user'));
     }
 

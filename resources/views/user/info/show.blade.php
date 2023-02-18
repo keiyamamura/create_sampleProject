@@ -95,9 +95,9 @@
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-end mt-4">
-                                    {{-- <x-a href="{{ route('user.info.edit', ['id' => $user->id]) }}" class="ml-4">
+                                    <x-a href="{{ route('user.info.edit', ['id' => $user->id]) }}" class="ml-4">
                                         {{ __('編集する') }}
-                                    </x-a> --}}
+                                    </x-a>
                                 </div>
                             </div>
                         </div>
