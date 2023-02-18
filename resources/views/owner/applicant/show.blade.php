@@ -115,9 +115,8 @@
                                                                 </div>
                                                                 <div class="flex items-center">
                                                                     <x-input type="text" name="salary_amount"
-                                                                        value="{{ $job->salary_amount }}" disabled
+                                                                        value="{{ $job->salary_amount . ' 円'}}" disabled
                                                                         class="block mt-1 w-full bg-gray-300 bg-opacity-50" />
-                                                                    <span>円</span>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -289,10 +289,9 @@
                                                         <div class="flex items-center">
                                                             <input type="text" id="salary_amount"
                                                                 name="salary_amount"
-                                                                value="{{ old('salary_amount') ?? $job->salary_amount }}"
+                                                                value="{{ old('salary_amount') ?? $job->salary_amount . ' 円'}}"
                                                                 required
                                                                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out mr-2">
-                                                            <span>円</span>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -166,6 +166,15 @@ class JobController extends Controller
      */
     public function show($id)
     {
+        $job = Job::findOrFail($id);
+
+        $prefecture = CheckForm::prefecture($job->prefectures_id);
+        $status     = CheckForm::status($job->status);
+        $experience = CheckForm::experience($job->experience);
+        $license    = CheckForm::license($job->license);
+        $age_limit  = CheckForm::age_limit($job->age);
+
+        return view('user.job.show', compact('job', 'prefecture', 'status', 'experience', 'license', 'age_limit'));
     }
 
     /**

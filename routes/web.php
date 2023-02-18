@@ -27,10 +27,10 @@ Route::middleware(['auth:users'])->group(function () {
     Route::get('/dashboard', [JobController::class, 'list'])
         ->name('dashboard');
 
-    // Route::prefix('job')->name('job.')->group(function () {
-    //     Route::get('list', [JobController::class, 'list'])
-    //         ->name('list');
-    // });
+    Route::prefix('job')->name('job.')->group(function () {
+        Route::get('show/{id}', [JobController::class, 'show'])
+            ->name('show');
+    });
 
     Route::prefix('info')->name('info.')->group(function () {
         Route::get('show/{id}', [InfoController::class, 'show'])

@@ -157,8 +157,8 @@
                                             </div>
                                         </div>
                                         <div class="text-right cursor-pointer">
-                                            <a href="{{ route('owner.job.edit', ['id' => $job->id]) }}"
-                                                class="text-indigo-500 inline-flex items-center mt-3">編集する
+                                            <a href="{{ route('user.job.show', ['id' => $job->id]) }}"
+                                                class="text-indigo-500 inline-flex items-center mt-3">詳細を見る
                                                 <svg fill="none" stroke="currentColor" stroke-linecap="round"
                                                     stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2"
                                                     viewBox="0 0 24 24">
