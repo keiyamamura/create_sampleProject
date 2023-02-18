@@ -57,7 +57,7 @@ class JobController extends Controller
 
     public function list()
     {
-        $jobs = Job::orderby('created_at', 'desc')->paginate(10);
+        $jobs = Job::orderby('created_at', 'desc')->paginate(5);
 
         $prefecture = [];
         $status = [];
