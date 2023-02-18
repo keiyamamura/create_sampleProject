@@ -100,16 +100,16 @@
                                                                     <div class="flex">
                                                                         <div class="flex mr-6">
                                                                             <input id="monthly_salary" type="radio"
-                                                                                name="{{ 'wage_type' . $key}}" value="0"
-                                                                                disabled="true"
+                                                                                name="{{ 'wage_type' . $key }}"
+                                                                                value="0" disabled="true"
                                                                                 {{ $job->wage_type == 0 ? 'checked' : '' }} />
                                                                             <x-label for="monthly_salary"
                                                                                 :value="__('月給')" />
                                                                         </div>
                                                                         <div class="flex">
                                                                             <input id="hourly_wage" type="radio"
-                                                                                name="{{ 'wage_type' . $key}}" value="1"
-                                                                                disabled="true"
+                                                                                name="{{ 'wage_type' . $key }}"
+                                                                                value="1" disabled="true"
                                                                                 {{ $job->wage_type == 1 ? 'checked' : '' }} />
                                                                             <x-label for="hourly_wage"
                                                                                 :value="__('時給')" />
@@ -156,32 +156,50 @@
                                                 </div>{{-- /Qualifications --}}
                                             </div>
                                         </div>
-                                        <div class="text-right cursor-pointer">
+                                        <div class="flex justify-around mt-5">
                                             <a href="{{ route('user.job.show', ['id' => $job->id]) }}"
-                                                class="text-indigo-500 inline-flex items-center mt-3">詳細を見る
+                                                class="text-indigo-500 inline-flex items-center cursor-pointer">詳細を見る
                                                 <svg fill="none" stroke="currentColor" stroke-linecap="round"
                                                     stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2"
                                                     viewBox="0 0 24 24">
                                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                                 </svg>
                                             </a>
+                                            <form action="" method="post">
+                                                @csrf
+                                                <input type="submit" value="お気に入り登録" data-id="{{ $job->id }}"
+                                                    class="cursor-pointer inline-flex items-center px-4 py-2 bg-green-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-400 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
+                                            </form>
+                                            @if (is_null($applicant_list[$key]))
+                                                <form
+                                                    action="{{ route('user.applicant.create', ['job' => $job->id]) }}"
+                                                    method="get">
+                                                    <input type="submit" value="応募する"
+                                                        class="cursor-pointer inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
+                                                </form>
+                                            @else
+                                                <input type="submit" value="この求人は応募済みです" disabled
+                                                    class="cursor-pointer inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
+                                            @endif
                                         </div>
-                                    </div>{{-- Right --}}
-                                </div>
-                            @empty
-                                <div class="flex flex-col text-center w-full mb-20">
-                                    <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
-                                        求人がありません
-                                    </h1>
-                                </div>
-                            @endforelse
-                            <div class="mt-5">
-                                {{ $jobs->links() }}
-                            </div>
+
+                                    </div>
+                                </div>{{-- Right --}}
                         </div>
-                    </section>
+                    @empty
+                        <div class="flex flex-col text-center w-full mb-20">
+                            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
+                                求人がありません
+                            </h1>
+                        </div>
+                        @endforelse
+                        <div class="mt-5">
+                            {{ $jobs->links() }}
+                        </div>
                 </div>
+                </section>
             </div>
         </div>
+    </div>
     </div>
 </x-app-layout>
