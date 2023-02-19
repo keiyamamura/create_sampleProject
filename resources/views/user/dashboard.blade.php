@@ -185,21 +185,20 @@
 
                                     </div>
                                 </div>{{-- Right --}}
+                            @empty
+                                <div class="flex flex-col text-center w-full mb-20">
+                                    <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
+                                        求人がありません
+                                    </h1>
+                                </div>
+                            @endforelse
+                            <div class="mt-5">
+                                {{ $jobs->links() }}
+                            </div>
                         </div>
-                    @empty
-                        <div class="flex flex-col text-center w-full mb-20">
-                            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
-                                求人がありません
-                            </h1>
-                        </div>
-                        @endforelse
-                        <div class="mt-5">
-                            {{ $jobs->links() }}
-                        </div>
+                    </section>
                 </div>
-                </section>
             </div>
         </div>
-    </div>
     </div>
 </x-app-layout>
