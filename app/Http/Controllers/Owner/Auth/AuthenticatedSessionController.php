@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 
 class AuthenticatedSessionController extends Controller
@@ -36,6 +37,8 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        // Log::debug('owner', $request->session()->all());
 
         return redirect()->intended(RouteServiceProvider::OWNER_HOME);
     }
