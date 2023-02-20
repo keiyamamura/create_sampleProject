@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Services\CheckForm;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class InfoController extends Controller
@@ -48,7 +48,7 @@ class InfoController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:20',
             'age' => 'required|string|max:2',
             'gender' => 'required|string|max:2',
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),

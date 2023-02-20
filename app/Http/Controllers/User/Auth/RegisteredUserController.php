@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -30,19 +31,8 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'age' => 'required|string|max:2',
-            'gender' => 'required|string|max:2',
-            'email' => 'required|string|email|max:255|unique:users',
-            'prefectures_id' => 'required|string|max:2',
-            'municipalities' => 'required|string|max:255',
-            'current_job' => 'required|string|max:2',
-            'password' => 'required|string|confirmed|min:8',
-        ]);
-
         Auth::guard('users')->login($user = User::create([
             'name' => $request->name,
             'age' => $request->age,

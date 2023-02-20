@@ -99,7 +99,7 @@ return [
     'password'             => '正しいパスワードを指定してください。',
     'present'              => ':attributeが存在していません。',
     'regex'                => ':attributeに正しい形式を指定してください。',
-    'required'             => ':attributeは必ず指定してください。',
+    'required'             => ':attributeは必ず入力してください。',
     'required_if'          => ':otherが:valueの場合、:attributeも指定してください。',
     'required_unless'      => ':otherが:valuesでない場合、:attributeを指定してください。',
     'required_with'        => ':valuesを指定する場合は、:attributeも指定してください。',
@@ -120,7 +120,7 @@ return [
     'starts_with'          => ':attributeには、:valuesのどれかで始まる値を指定してください。',
     'string'               => ':attributeは文字列を指定してください。',
     'timezone'             => ':attributeには、有効なゾーンを指定してください。',
-    'unique'               => ':attribute既に登録されています',
+    'unique'               => ':attributeは、既に登録されています',
     'uploaded'             => ':attributeのアップロードに失敗しました。',
     'url'                  => ':attributeに正しい形式を指定してください。',
     'uuid'                 => ':attributeに有効なUUIDを指定してください。',
@@ -162,13 +162,15 @@ return [
         'status' => '雇用形態',
         'wage_type' => '給与形態',
         'salary_amount' => '給与金額',
-        // 'img' => '画像', // file設定をあとで行う
         'age' => '年齢',
         'license' => '免許',
         'experience' => '経験度',
         'company_name' => '会社名',
         'company_tel' => '会社の電話番号',
         'company_email' => '会社のメールアドレス',
+        'name' => '氏名',
+        'municipalities' => '住所',
+        'current_job' => '現在のご職業'
     ],
 
 ];
