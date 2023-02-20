@@ -84,7 +84,7 @@ class ApplicantController extends Controller
                     'status' => 'alert'
                 ]);
         }
-        
+
         Applicant::create([
             'user_id' => Auth::id(),
             'job_id' => $job
@@ -101,6 +101,15 @@ class ApplicantController extends Controller
     public function consent($user, $job)
     {
         $applicant = Applicant::where('user_id', $user)->where('job_id', $job)->first();
+        if (is_null($applicant)) {
+            return redirect()
+            ->route('owner.applicant.index')
+            ->with([
+                'message' => '不正な操作が行われました',
+                'status' => 'alert'
+            ]);
+        }
+
         $consent = Applicant::findOrFail($applicant->id);
 
         $consent->consent_flg = 1;
@@ -117,8 +126,16 @@ class ApplicantController extends Controller
     public function destroy($user, $job)
     {
         $applicant = Applicant::where('user_id', $user)->where('job_id', $job)->first();
-        $applicant = Applicant::findOrFail($applicant->id);
+        if (is_null($applicant)) {
+            return redirect()
+                ->route('owner.applicant.index')
+                ->with([
+                    'message' => '不正な操作が行われました',
+                    'status' => 'alert'
+                ]);
+        }
 
+        $applicant = Applicant::findOrFail($applicant->id);
         $applicant->delete();
 
         return redirect()

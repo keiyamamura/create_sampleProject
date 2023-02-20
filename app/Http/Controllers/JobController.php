@@ -201,7 +201,7 @@ class JobController extends Controller
             return redirect()
                 ->route('owner.dashboard')
                 ->with([
-                    'message' => 'エラーが発生しました。',
+                    'message' => '許可されていない操作です。',
                     'status' => 'alert'
                 ]);
         }
