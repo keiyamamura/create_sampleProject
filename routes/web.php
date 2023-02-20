@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\User\InfoController;
+use App\Http\Controllers\User\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,13 @@ Route::middleware(['auth:users'])->group(function () {
     Route::prefix('job')->name('job.')->group(function () {
         Route::get('show/{id}', [JobController::class, 'show'])
             ->name('show');
+    });
+
+    Route::prefix('favorite')->name('favorite.')->group(function () {
+        Route::post('store/{job}', [favoriteController::class, 'store'])
+            ->name('store');
+        Route::post('destroy/{job}', [favoriteController::class, 'destroy'])
+            ->name('destroy');
     });
 
     Route::prefix('info')->name('info.')->group(function () {

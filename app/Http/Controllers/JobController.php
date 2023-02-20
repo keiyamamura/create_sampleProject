@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use App\Models\Applicant;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -66,6 +67,7 @@ class JobController extends Controller
         $license = [];
         $age_limit = [];
         $applicant_list = [];
+        $favorite = [];
 
         foreach ($jobs as $key => $job) {
             $prefecture[] = CheckForm::prefecture($job->prefectures_id);
@@ -74,9 +76,11 @@ class JobController extends Controller
             $license[]    = CheckForm::license($job->license);
             $age_limit[]  = CheckForm::age_limit($job->age);
             $applicant_list[] = Applicant::where('user_id', Auth::id())->where('job_id', $job->id)->first();
+            $favorite[] = Favorite::where('user_id', Auth::id())->where('job_id', $job->id)->first();
         }
 
-        return view('user.dashboard', compact('jobs', 'prefecture', 'status', 'experience', 'license', 'age_limit', 'applicant_list'));
+
+        return view('user.dashboard', compact('jobs', 'prefecture', 'status', 'experience', 'license', 'age_limit', 'applicant_list', 'favorite'));
     }
 
     /**

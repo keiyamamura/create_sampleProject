@@ -165,11 +165,25 @@
                                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                                 </svg>
                                             </a>
-                                            <form action="" method="post">
-                                                @csrf
-                                                <input type="submit" value="お気に入り登録" data-id="{{ $job->id }}"
-                                                    class="cursor-pointer inline-flex items-center px-4 py-2 bg-green-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-400 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
-                                            </form>
+                                            @if (is_null($favorite[$key]))
+                                                <form
+                                                    action="{{ route('user.favorite.store', ['job' => $job->id]) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    <input type="submit" value="お気に入り登録"
+                                                        data-id="{{ $job->id }}"
+                                                        class="cursor-pointer inline-flex items-center px-4 py-2 bg-green-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-400 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
+                                                </form>
+                                            @else
+                                                <form
+                                                    action="{{ route('user.favorite.destroy', ['job' => $job->id]) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    <input type="submit" value="お気に入りから解除"
+                                                        data-id="{{ $job->id }}"
+                                                        class="cursor-pointer inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-400 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
+                                                </form>
+                                            @endif
                                             @if (is_null($applicant_list[$key]))
                                                 <form
                                                     action="{{ route('user.applicant.create', ['job' => $job->id]) }}"
@@ -179,7 +193,7 @@
                                                 </form>
                                             @else
                                                 <input type="submit" value="この求人は応募済みです" disabled
-                                                    class="cursor-pointer inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
+                                                    class="cursor-pointer inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-800 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150" />
                                             @endif
                                         </div>
 
