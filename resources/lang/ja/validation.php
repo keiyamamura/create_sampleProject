@@ -169,6 +169,7 @@ return [
         'company_tel' => '会社の電話番号',
         'company_email' => '会社のメールアドレス',
         'name' => '氏名',
+        'gender' => '性別',
         'municipalities' => '住所',
         'current_job' => '現在のご職業'
     ],

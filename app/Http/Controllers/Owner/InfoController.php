@@ -31,7 +31,7 @@ class InfoController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:20',
             'age' => 'required|string|max:2',
             'gender' => 'required|string|max:2',
             'email' => 'required|string|email|max:255|unique:owners,email,' . Auth::id(),
