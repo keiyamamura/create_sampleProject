@@ -42,6 +42,8 @@ Route::middleware(['auth:users'])->group(function () {
     });
 
     Route::prefix('favorite')->name('favorite.')->group(function () {
+        Route::get('list', [favoriteController::class, 'list'])
+            ->name('list');
         Route::post('store/{job}', [favoriteController::class, 'store'])
             ->name('store');
         Route::post('destroy/{job}', [favoriteController::class, 'destroy'])

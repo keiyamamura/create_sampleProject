@@ -7,9 +7,38 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Applicant;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Services\CheckForm;
 
 class FavoriteController extends Controller
 {
+    public function list()
+    {
+        $favorites = Favorite::where('user_id', Auth::id())
+        ->join('jobs', 'jobs.id', '=', 'favorites.job_id')
+        ->orderby('favorites.created_at', 'desc')
+        ->paginate(10);
+
+        $prefecture = [];
+        $status = [];
+        $experience = [];
+        $license = [];
+        $age_limit = [];
+        $applicant_list = [];
+        $favorite = [];
+
+        foreach ($favorites as $key => $job) {
+            $prefecture[] = CheckForm::prefecture($job->prefectures_id);
+            $status[]     = CheckForm::status($job->status);
+            $experience[] = CheckForm::experience($job->experience);
+            $license[]    = CheckForm::license($job->license);
+            $age_limit[]  = CheckForm::age_limit($job->age);
+            $applicant_list[] = Applicant::where('user_id', Auth::id())->where('job_id', $job->id)->first();
+            $favorite[] = Favorite::where('user_id', Auth::id())->where('job_id', $job->id)->first();
+        }
+
+        return view('user.favorite.list', compact('favorites', 'prefecture', 'status', 'experience', 'license', 'age_limit', 'applicant_list', 'favorite'));
+    }
+
     public function store($job)
     {
         Favorite::create([

@@ -90,13 +90,13 @@ class JobController extends Controller
      */
     public function create()
     {
-        Log::emergency("create ログ!");
+        // Log::emergency("create ログ!");
         return view('owner.job.create');
     }
 
     public function confirm(JobContactRequest $request)
     {
-        Log::emergency("confirm ログ!");
+        // Log::emergency("confirm ログ!");
 
         $input = $request->only($this->formItems);
 
@@ -136,7 +136,7 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        Log::emergency("store ログ!");
+        // Log::emergency("store ログ!");
         $input = $request->session()->get("form_input");
         $input['owner_id'] = Auth::id();
 
