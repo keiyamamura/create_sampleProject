@@ -24,9 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('owner.welcome');
-});
+Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
 
 Route::middleware(['auth:owners'])->group(function () {
     Route::get('/dashboard', [JobController::class, 'index'])
