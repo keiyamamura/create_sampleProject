@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Applicant;
 use App\Models\Favorite;
 use Illuminate\Http\Request;
@@ -39,8 +40,17 @@ class FavoriteController extends Controller
         return view('user.favorite.list', compact('favorites', 'prefecture', 'status', 'experience', 'license', 'age_limit', 'applicant_list', 'favorite'));
     }
 
-    public function store($job)
+    public function store(int $user, $job)
     {
+        if (!DB::table('jobs')->where('id', $job)->exists() || $user != Auth::id()) {
+            return redirect()
+                ->route('user.dashboard')
+                ->with([
+                    'message' => '不正な操作が行われました',
+                    'status'  => 'alert'
+                ]);
+        }
+
         Favorite::create([
             'user_id' => Auth::id(),
             'job_id'  => $job
@@ -54,8 +64,17 @@ class FavoriteController extends Controller
             ]);
     }
 
-    public function destroy($job)
+    public function destroy(int $user, $job)
     {
+        if (!DB::table('jobs')->where('id', $job)->exists() || $user !== Auth::id()) {
+            return redirect()
+                ->route('user.dashboard')
+                ->with([
+                    'message' => '不正な操作が行われました',
+                    'status'  => 'alert'
+                ]);
+        }
+
         $favorite_info = Favorite::where('user_id', Auth::id())->where('job_id', $job)->first();
         $favorite = Favorite::findOrFail($favorite_info->id);
         $favorite->delete($favorite->id);

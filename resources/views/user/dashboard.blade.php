@@ -167,7 +167,7 @@
                                             </a>
                                             @if (is_null($favorite[$key]))
                                                 <form
-                                                    action="{{ route('user.favorite.store', ['job' => $job->id]) }}"
+                                                    action="{{ route('user.favorite.store', ['user' => Auth::id(), 'job' => $job->id]) }}"
                                                     method="post">
                                                     @csrf
                                                     <input type="submit" value="お気に入り登録"
@@ -176,7 +176,7 @@
                                                 </form>
                                             @else
                                                 <form
-                                                    action="{{ route('user.favorite.destroy', ['job' => $job->id]) }}"
+                                                    action="{{ route('user.favorite.destroy', ['user' => Auth::id(), 'job' => $job->id]) }}"
                                                     method="post">
                                                     @csrf
                                                     <input type="submit" value="お気に入りから解除"
