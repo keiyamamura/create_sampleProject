@@ -180,10 +180,12 @@ class JobController extends Controller
         $experience = CheckForm::experience($job->experience);
         $license    = CheckForm::license($job->license);
         $age_limit  = CheckForm::age_limit($job->age);
+        $favorite   = Favorite::where('user_id', Auth::id())->where('job_id', $job->id)->first();
+
 
         $applicant_list = Applicant::where('user_id', Auth::id())->where('job_id', $id)->get();
 
-        return view('user.job.show', compact('job', 'prefecture', 'status', 'experience', 'license', 'age_limit', 'applicant_list'));
+        return view('user.job.show', compact('job', 'prefecture', 'status', 'experience', 'license', 'age_limit', 'applicant_list', 'favorite'));
     }
 
     /**
