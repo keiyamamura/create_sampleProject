@@ -119,7 +119,7 @@
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="email" :value="__('メールアドレス')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
                     required />
@@ -207,7 +207,7 @@
             </div>
 
             <div class="flex items-center justify-between mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('user.login') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('owner.login') }}">
                     {{ __('登録済みの方はこちら') }}
                 </a>
 
