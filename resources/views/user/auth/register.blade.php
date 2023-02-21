@@ -1,9 +1,24 @@
 <x-guest-layout>
     <x-auth-card>
+        @if (Route::has('user.login'))
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                    @auth('users')
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">仕事検索</a>
+                    @else
+                        <a href="{{ route('user.login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ログイン</a>
+
+                        @if (Route::has('user.register'))
+                            <a href="{{ route('user.register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">新規登録</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            <div class="w-28">
+                <a href="/">
+                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                </a>
+            </div>
         </x-slot>
 
         <!-- Validation Errors -->

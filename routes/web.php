@@ -5,6 +5,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\User\InfoController;
 use App\Http\Controllers\User\FavoriteController;
+use App\Http\Controllers\User\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,8 @@ use App\Http\Controllers\User\FavoriteController;
 |
 */
 
-Route::get('/', function () {
-    return view('user.welcome');
-});
+Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
+
 
 // Route::get('/dashboard', function () {
 //     return view('user.dashboard');
