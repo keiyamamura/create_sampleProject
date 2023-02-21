@@ -77,6 +77,7 @@
                             @endif
                         </div>
                     </section>
+                    {{ $applicants->links() }}
                 </div>
             </div>
         </div>

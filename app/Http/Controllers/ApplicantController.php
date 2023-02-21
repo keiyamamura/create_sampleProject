@@ -15,9 +15,11 @@ class ApplicantController extends Controller
     public function index()
     {
         $applicants = Applicant::where('owner_id', Auth::id())->where('consent_flg', 0)
-            ->join('users', 'users.id', '=', 'applicants.user_id')
-            ->join('jobs', 'jobs.id', '=', 'applicants.job_id')
-            ->get();
+        ->join('users', 'users.id', '=', 'applicants.user_id')
+        ->join('jobs', 'jobs.id', '=', 'applicants.job_id')
+        ->orderby('applicants.created_at', 'desc')
+        // ->get();
+        ->paginate(10);
 
         $current_jobs = [];
         foreach($applicants as $applicant) {
