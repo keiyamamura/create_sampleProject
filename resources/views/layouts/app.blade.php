@@ -32,7 +32,11 @@
             </header>
 
             <!-- Page Content -->
-            <main>
+            @if (request()->is('owner*'))
+                <main class="bg-blue-100">
+            @else
+                <main class="bg-green-100">
+            @endif
                 {{ $slot }}
             </main>
         </div>
