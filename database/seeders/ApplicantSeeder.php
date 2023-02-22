@@ -23,20 +23,6 @@ class ApplicantSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'user_id' => '1',
-                'job_id' => '2',
-                'consent_flg' => '0',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'user_id' => '1',
-                'job_id' => '3',
-                'consent_flg' => '0',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
                 'user_id' => '2',
                 'job_id' => '1',
                 'consent_flg' => '0',

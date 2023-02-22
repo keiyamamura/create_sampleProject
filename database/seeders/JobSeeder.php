@@ -41,7 +41,7 @@ class JobSeeder extends Seeder
                 'license' => '1',
                 'experience' => '2',
                 'company_name' => '〇〇茶園',
-                'company_tel' => '3333333',
+                'company_tel' => '03333333',
                 'company_email' => 'test@test.com',
                 'created_at' => now(),
                 'updated_at' => now()
@@ -68,7 +68,7 @@ class JobSeeder extends Seeder
                 'license' => '2',
                 'experience' => '2',
                 'company_name' => '〇〇茶工房',
-                'company_tel' => '0300000000',
+                'company_tel' => '03333333',
                 'company_email' => 'test@test.com',
                 'created_at' => now(),
                 'updated_at' => now()
@@ -88,7 +88,7 @@ class JobSeeder extends Seeder
                 'license' => '1',
                 'experience' => '2',
                 'company_name' => '〇〇茶農業共同組合',
-                'company_tel' => '0547000000',
+                'company_tel' => '03333333',
                 'company_email' => 'test@test.com',
                 'created_at' => now(),
                 'updated_at' => now()
