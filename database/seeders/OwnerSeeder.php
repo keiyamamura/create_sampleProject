@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Owner;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +16,8 @@ class OwnerSeeder extends Seeder
      */
     public function run()
     {
+        Owner::factory()->count(20)->create();
+
         DB::table('owners')->insert([
             [
                 'name' => 'test1',
@@ -50,5 +53,6 @@ class OwnerSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
+
     }
 }
