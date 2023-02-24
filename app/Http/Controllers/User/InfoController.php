@@ -9,12 +9,18 @@ use App\Mail\TestMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Jobs\SendThanksMail;
 
 class InfoController extends Controller
 {
     public function show($id)
     {
-        Mail::to('test@example.com')->send(new TestMail());
+        // 同期処理
+        // Mail::to('test@example.com')->send(new TestMail());
+
+        // 非同期処理
+        SendThanksMail::dispatch();
+        
         $user = User::findOrFail($id);
         if ($user->id !== Auth::id()) {
             return redirect()
