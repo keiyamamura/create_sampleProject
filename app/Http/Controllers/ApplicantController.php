@@ -94,7 +94,8 @@ class ApplicantController extends Controller
         }
 
         $job_info = Job::findOrFail($job);
-        Mail::to($job_info->owner)->send(new ApplicantMail($job_info->owner));
+        $user     = User::findOrFail(Auth::id());
+        Mail::to($job_info->owner)->send(new ApplicantMail($user, $job_info->owner));
 
         Applicant::create([
             'user_id' => Auth::id(),
@@ -126,7 +127,7 @@ class ApplicantController extends Controller
         $consent->consent_flg = 1;
         $consent->save();
 
-        Mail::to($applicant->user)->send(new ConsentMail($applicant->user));
+        Mail::to($applicant->user)->send(new ConsentMail($applicant));
 
         return redirect()
             ->route('owner.applicant.index')
@@ -151,7 +152,7 @@ class ApplicantController extends Controller
         $applicant = Applicant::findOrFail($applicant->id);
         $applicant->delete();
 
-        Mail::to($applicant->user)->send(new NotAdoptedMail($applicant->user));
+        Mail::to($applicant->user)->send(new NotAdoptedMail($applicant));
 
         return redirect()
             ->route('owner.applicant.index')

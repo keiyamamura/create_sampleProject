@@ -11,15 +11,15 @@ class ConsentMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $applicant;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($applicant)
     {
-        $this->user = $user;
+        $this->applicant = $applicant;
     }
 
     /**
@@ -33,7 +33,8 @@ class ConsentMail extends Mailable
             ->subject('内定通知のお知らせ')
             ->view('emails.consent')
             ->with([
-                'user' => $this->user
+                'user' => $this->applicant->user,
+                'job'  => $this->applicant->job
             ]);
     }
 }
