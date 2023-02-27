@@ -11,6 +11,7 @@ use App\Models\Applicant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ConsentMail;
+use App\Mail\NotAdoptedMail;
 
 class ApplicantController extends Controller
 {
@@ -143,6 +144,8 @@ class ApplicantController extends Controller
 
         $applicant = Applicant::findOrFail($applicant->id);
         $applicant->delete();
+
+        Mail::to($applicant->user)->send(new NotAdoptedMail($applicant->user));
 
         return redirect()
             ->route('owner.applicant.index')
