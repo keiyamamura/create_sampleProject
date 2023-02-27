@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\Job;
 use App\Models\Applicant;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConsentMail;
 
 class ApplicantController extends Controller
 {
@@ -116,6 +118,8 @@ class ApplicantController extends Controller
 
         $consent->consent_flg = 1;
         $consent->save();
+
+        Mail::to($applicant->user)->send(new ConsentMail($applicant->user));
 
         return redirect()
             ->route('owner.applicant.index')
