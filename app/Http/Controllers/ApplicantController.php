@@ -10,9 +10,9 @@ use App\Models\Job;
 use App\Models\Applicant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ConsentMail;
+use App\Jobs\SendConsentMail;
+use App\Jobs\SendApplicantMail;
 use App\Mail\NotAdoptedMail;
-use App\Mail\ApplicantMail;
 use Illuminate\Support\Facades\DB;
 
 class ApplicantController extends Controller
@@ -83,7 +83,7 @@ class ApplicantController extends Controller
     public function store($job)
     {
         $applicant_list = Applicant::where('user_id', Auth::id())->where('job_id', $job)->get();
-        // dd($applicant_list);
+
         if ($applicant_list->isNotEmpty()) {
             return redirect()
                 ->route('user.dashboard')
@@ -95,7 +95,8 @@ class ApplicantController extends Controller
 
         $job_info = Job::findOrFail($job);
         $user     = User::findOrFail(Auth::id());
-        Mail::to($job_info->owner)->send(new ApplicantMail($user, $job_info->owner));
+
+        SendApplicantMail::dispatch($user, $job_info->owner);
 
         Applicant::create([
             'user_id' => Auth::id(),
@@ -127,7 +128,7 @@ class ApplicantController extends Controller
         $consent->consent_flg = 1;
         $consent->save();
 
-        Mail::to($applicant->user)->send(new ConsentMail($applicant));
+        SendConsentMail::dispatch($applicant);
 
         return redirect()
             ->route('owner.applicant.index')
